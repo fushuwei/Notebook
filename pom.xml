@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.itangsoft</groupId>
+    <artifactId>notebook</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>gwt-app</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <gwt.version>2.10.0</gwt.version>
+        <nalu.version>2.12.6</nalu.version>
+        <domino-rest.version>1.0.1</domino-rest.version>
+        <domino-jackson.version>1.0.3</domino-jackson.version>
+        <domino-ui.version>2.0.0-RC4</domino-ui.version>
+        <elemental2.version>1.2.1</elemental2.version>
+        <akasha.version>0.31</akasha.version>
+        <gwt-commons-lang3.version>3.14.0-0</gwt-commons-lang3.version>
+        <htmlunit.version>2.70.0</htmlunit.version>
+        <slf4j-api.version>2.0.9</slf4j-api.version>
+
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <gwt-maven-plugin.version>1.1.0</gwt-maven-plugin.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+        <plexus-utils.version>3.0.24</plexus-utils.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- GWT -->
+            <dependency>
+                <groupId>org.gwtproject</groupId>
+                <artifactId>gwt</artifactId>
+                <version>${gwt.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Nalu -->
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu</artifactId>
+                <version>${nalu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-processor</artifactId>
+                <version>${nalu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.nalukit</groupId>
+                <artifactId>nalu-plugin-elemental2</artifactId>
+                <version>${nalu.version}</version>
+            </dependency>
+
+            <!-- Domino Rest -->
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-rest-client</artifactId>
+                <version>${domino-rest.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-rest-processor</artifactId>
+                <version>${domino-rest.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Domino Jackson -->
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-jackson</artifactId>
+                <version>${domino-jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-jackson-processor</artifactId>
+                <version>${domino-jackson.version}</version>
+            </dependency>
+
+            <!-- Domino UI -->
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-ui</artifactId>
+                <version>${domino-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dominokit</groupId>
+                <artifactId>domino-ui</artifactId>
+                <version>${domino-ui.version}</version>
+                <classifier>sources</classifier>
+            </dependency>
+
+            <!-- Elemental2 Indexed DB -->
+            <dependency>
+                <groupId>com.google.elemental2</groupId>
+                <artifactId>elemental2-indexeddb</artifactId>
+                <version>${elemental2.version}</version>
+            </dependency>
+            <!-- Akasha (similar to Elemental2) -->
+            <dependency>
+                <groupId>org.realityforge.akasha</groupId>
+                <artifactId>akasha-gwt</artifactId>
+                <version>${akasha.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jboss.elemento</groupId>
+                <artifactId>elemento-core</artifactId>
+                <version>1.2.9</version>
+            </dependency>
+
+            <!-- Apache Commons -->
+            <dependency>
+                <groupId>de.knightsoft-net</groupId>
+                <artifactId>gwt-commons-lang3</artifactId>
+                <version>${gwt-commons-lang3.version}</version>
+            </dependency>
+
+            <!-- Htmlunit -->
+            <dependency>
+                <groupId>net.sourceforge.htmlunit</groupId>
+                <artifactId>htmlunit</artifactId>
+                <version>${htmlunit.version}</version>
+            </dependency>
+
+            <!-- slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- GWT -->
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>net.sourceforge.htmlunit</groupId>
+                    <artifactId>htmlunit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Nalu -->
+        <dependency>
+            <groupId>com.github.nalukit</groupId>
+            <artifactId>nalu</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.nalukit</groupId>
+            <artifactId>nalu-processor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.nalukit</groupId>
+            <artifactId>nalu-plugin-elemental2</artifactId>
+        </dependency>
+
+        <!-- Domino Rest -->
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-rest-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-rest-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Domino UI -->
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-ui</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.elemento</groupId>
+            <artifactId>elemento-core</artifactId>
+        </dependency>
+
+        <!-- Apache Commons -->
+        <dependency>
+            <groupId>de.knightsoft-net</groupId>
+            <artifactId>gwt-commons-lang3</artifactId>
+        </dependency>
+
+        <!-- Htmlunit -->
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+        </dependency>
+
+        <!-- slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Maven Plugin For GWT -->
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <moduleName>com.itangsoft.notebook.Notebook</moduleName>
+                    <moduleShortName>notebook</moduleShortName>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <!-- Maven Compiler Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven Source Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!-- Maven Plugin For GWT -->
+                <plugin>
+                    <groupId>net.ltgt.gwt.maven</groupId>
+                    <artifactId>gwt-maven-plugin</artifactId>
+                    <version>${gwt-maven-plugin.version}</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <sourceLevel>${maven.compiler.source}</sourceLevel>
+                        <launcherDir>${basedir}/target/gwt/launcherDir</launcherDir>
+                        <workDir>${basedir}/target/gwt/workDir</workDir>
+                        <failOnError>true</failOnError>
+                        <optimize>9</optimize>
+                        <jvmArgs>
+                            <arg>-Xms512m</arg>
+                            <arg>-Xmx4096m</arg>
+                        </jvmArgs>
+                        <compilerArgs>
+                            <arg>-gen</arg>
+                            <arg>${basedir}/target/gwt/gen</arg>
+                            <arg>-logLevel</arg>
+                            <arg>INFO</arg>
+                            <arg>-style</arg>
+                            <arg>PRETTY</arg>
+                            <!-- <arg>OBFUSCATED</arg> -->
+                            <arg>-generateJsInteropExports</arg>
+                            <arg>-incremental</arg>
+                        </compilerArgs>
+                        <codeserverArgs>
+                            <arg>-port</arg>
+                            <arg>6789</arg>
+                        </codeserverArgs>
+                    </configuration>
+                </plugin>
+
+                <!-- Tomcat Maven Plugin -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>${tomcat7-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- 环境配置 -->
+    <profiles>
+        <!-- prod -->
+        <profile>
+            <id>env-prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>env</name>
+                    <value>prod</value>
+                </property>
+            </activation>
+        </profile>
+
+        <!-- dev -->
+        <profile>
+            <id>env-dev</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>dev</value>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>net.ltgt.gwt.maven</groupId>
+                            <artifactId>gwt-maven-plugin</artifactId>
+                            <dependencies>
+                                <!-- Resolve that gwt:codeserver process cannot be closed under windows -->
+                                <dependency>
+                                    <groupId>org.codehaus.plexus</groupId>
+                                    <artifactId>plexus-utils</artifactId>
+                                    <version>${plexus-utils.version}</version>
+                                </dependency>
+                            </dependencies>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
