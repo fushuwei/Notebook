@@ -4,6 +4,7 @@ import com.github.nalukit.nalu.client.plugin.IsCustomConfirmPresenter;
 import com.github.nalukit.nalu.client.plugin.IsNaluProcessorPlugin.ConfirmHandler;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.dialogs.MessageDialog;
+import org.dominokit.domino.ui.dialogs.MessageDialogStyles;
 import org.dominokit.domino.ui.style.Color;
 
 /**
@@ -19,18 +20,20 @@ public class CancelEditorConfirmPresenter implements IsCustomConfirmPresenter {
 
     @Override
     public void confirm(String message) {
-        MessageDialog messageDialog = MessageDialog.create("You will lost all your changes!", "This can not reverted!");
+        MessageDialog messageDialog = MessageDialog.createMessage("You will lost all your changes!", "This can not reverted!");
 
         Button revertButton = Button.create("Revert")
-            .setColor(Color.RED.getName())
-            // .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
+            .linkify()
+            .setColor(Color.RED)
+            .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
             .addClickListener(e -> {
                 messageDialog.close();
                 confirmHandler.onOk();
             });
 
         Button cancelButton = Button.create("Cancel")
-            // .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
+            .linkify()
+            .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
             .addClickListener(e -> {
                 messageDialog.close();
                 confirmHandler.onCancel();
@@ -38,8 +41,8 @@ public class CancelEditorConfirmPresenter implements IsCustomConfirmPresenter {
 
         messageDialog.setAutoClose(false)
             .setModal(true)
-            // .warning()
-            // .getFooterElement()
+            .warning()
+            .getFooterElement()
             .clearElement()
             .appendChild(revertButton)
             .appendChild(cancelButton);

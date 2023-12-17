@@ -19,6 +19,6 @@ public class ContentComponent
 
     @Override
     public void render() {
-        initElement(DominoElement.elements.div().element());
+        initElement(DominoElement.div().element());
     }
 }

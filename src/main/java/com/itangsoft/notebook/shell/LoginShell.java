@@ -5,13 +5,14 @@ import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.itangsoft.notebook.AppContext;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
+import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
-import org.dominokit.domino.ui.elements.AnchorElement;
-import org.dominokit.domino.ui.elements.DivElement;
-import org.dominokit.domino.ui.elements.SectionElement;
-import org.dominokit.domino.ui.menu.direction.DropDirection;
+import elemental2.dom.HTMLElement;
+import org.dominokit.domino.ui.popover.PopupPosition;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.utils.DominoElement;
+import org.jboss.elemento.Elements;
+import org.jboss.elemento.HTMLContainerBuilder;
 
 /**
  * Login Shell
@@ -21,55 +22,54 @@ import org.dominokit.domino.ui.utils.DominoElement;
 @Shell(Routes.SHELL_LOGIN)
 public class LoginShell extends AbstractShell<AppContext> {
 
-    DivElement content = DominoElement.elements.div().css("login-page");
+    DominoElement<HTMLDivElement> content = DominoElement.div().css("login-page");
 
     @Override
     public void attachShell() {
-        DominoElement.elements.body()
-            .appendChild(content.appendChild(getHeader()).appendChild(getContent()).appendChild(getFooter()))
-            .style().setOverFlow("auto");
+        DominoElement.body().appendChild(
+            content.appendChild(getHeader()).appendChild(getContent()).appendChild(getFooter()));
     }
 
-    public SectionElement getHeader() {
-        return DominoElement.elements.section()
-            .appendChild(DominoElement.elements.a()
-                .appendChild(DominoElement.elements.img("images/logo_full.png")))
+    public DominoElement<HTMLElement> getHeader() {
+        return DominoElement.of(Elements.section())
+            .appendChild(DominoElement.of(Elements.a())
+                .appendChild(DominoElement.of(Elements.img("images/logo_full.png"))))
             .css("login-header");
     }
 
-    public DivElement getContent() {
-        return DominoElement.elements.div().setId(Slots.SELECTOR_LOGIN_CONTENT);
+    public DominoElement<HTMLDivElement> getContent() {
+        return DominoElement.div().setId(Slots.SELECTOR_LOGIN_CONTENT);
     }
 
-    public SectionElement getFooter() {
-        AnchorElement versionAnchor = DominoElement.elements.a().textContent("软件版本");
+    public DominoElement<HTMLElement> getFooter() {
+        HTMLContainerBuilder<HTMLAnchorElement> versionAnchor = Elements.a().textContent("软件版本");
         // Define a tooltip on version anchor
-        Tooltip.create(versionAnchor, DominoElement.elements.div()
-                .appendChild(DominoElement.elements.div().textContent("软件版本：" + context.getApplicationVersion()))
-                .appendChild(DominoElement.elements.div().textContent("发布日期：" + context.getApplicationBuildTimeStr()))
+        Tooltip.create(versionAnchor, DominoElement.div()
+                .appendChild(DominoElement.div().textContent("软件版本：" + context.getApplicationVersion()))
+                .appendChild(DominoElement.div().textContent("发布日期：" + context.getApplicationBuildTimeStr()))
                 .setCssProperty("text-align", "left")
                 .element())
-            .setPosition(DropDirection.RIGHT_MIDDLE);
+            .position(PopupPosition.RIGHT);
 
-        DivElement links = DominoElement.elements.div()
-            .appendChild(DominoElement.elements.a("#", "_blank").textContent("公司简介"))
-            .appendChild(DominoElement.elements.span().textContent("|"))
-            .appendChild(DominoElement.elements.a("#", "_blank").textContent("诚聘英才"))
-            .appendChild(DominoElement.elements.span().textContent("|"))
-            .appendChild(DominoElement.elements.a("#", "_blank").textContent("联系我们"))
-            .appendChild(DominoElement.elements.span().textContent("|"))
-            .appendChild(DominoElement.elements.a("#", "_blank").textContent("意见反馈"))
-            .appendChild(DominoElement.elements.span().textContent("|"))
-            .appendChild(DominoElement.elements.a("#", "_blank").textContent("帮助中心"))
-            .appendChild(DominoElement.elements.span().textContent("|"))
+        DominoElement<HTMLDivElement> links = DominoElement.div()
+            .appendChild(Elements.a("#", "_blank").textContent("公司简介"))
+            .appendChild(Elements.span().textContent("|"))
+            .appendChild(Elements.a("#", "_blank").textContent("诚聘英才"))
+            .appendChild(Elements.span().textContent("|"))
+            .appendChild(Elements.a("#", "_blank").textContent("联系我们"))
+            .appendChild(Elements.span().textContent("|"))
+            .appendChild(Elements.a("#", "_blank").textContent("意见反馈"))
+            .appendChild(Elements.span().textContent("|"))
+            .appendChild(Elements.a("#", "_blank").textContent("帮助中心"))
+            .appendChild(Elements.span().textContent("|"))
             .appendChild(versionAnchor)
             .css("login-footer-links");
 
-        DivElement copyright = DominoElement.elements.div()
-            .textContent("Copyright © 2024 樹 版权所有")
+        DominoElement<HTMLDivElement> copyright = DominoElement.div()
+            .textContent("Copyright © 2023 MOCHOUSOFT.COM 版权所有")
             .css("login-footer-copyright");
 
-        return DominoElement.elements.section()
+        return DominoElement.of(Elements.section())
             .appendChild(links)
             .appendChild(copyright)
             .css("login-footer");

@@ -5,6 +5,8 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.Element;
+import org.dominokit.domino.ui.forms.FieldStyle;
+import org.dominokit.domino.ui.utils.DominoUIConfig;
 import org.dominokit.rest.DominoRestConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,7 @@ public class AppEntryPoint implements EntryPoint {
                 DomGlobal.window.alert("PANIC! -> Server failed to process request"));
 
         // Initialize domino ui
-        // DominoUIConfig.CONFIG.setDefaultFieldsStyle(FieldStyle.ROUNDED).setCondensed(true);
+        DominoUIConfig.INSTANCE.setDefaultFieldsStyle(FieldStyle.ROUNDED).setCondensed(true);
 
         // Create and start the application
         NotebookApplication application = new NotebookApplicationImpl();
@@ -44,6 +46,6 @@ public class AppEntryPoint implements EntryPoint {
             element.remove();
         }
 
-        logger.info("Notebook UI have been initialized.");
+        logger.info("DataPlus UI have been initialized.");
     }
 }

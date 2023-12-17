@@ -20,7 +20,7 @@
         <nalu.version>2.12.6</nalu.version>
         <domino-rest.version>1.0.1</domino-rest.version>
         <domino-jackson.version>1.0.3</domino-jackson.version>
-        <domino-ui.version>2.0.0-RC4</domino-ui.version>
+        <domino-ui.version>1.0.6</domino-ui.version>
         <elemental2.version>1.2.1</elemental2.version>
         <akasha.version>0.31</akasha.version>
         <gwt-commons-lang3.version>3.14.0-0</gwt-commons-lang3.version>
