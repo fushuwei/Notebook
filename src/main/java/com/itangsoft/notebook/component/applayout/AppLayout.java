@@ -138,7 +138,7 @@ public class AppLayout extends BaseDominoElement<HTMLDivElement, AppLayout> {
      * @param word 头像对应的文字
      */
     public void setAvatar(String word) {
-        header.getAvatar().clearElement().appendChild(DominoElement.of(Elements.span()).setAttribute("alt", word));
+        header.getAvatar().clearElement().appendChild(DominoElement.div().setAttribute("alt", word));
     }
 
     /**

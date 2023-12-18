@@ -393,7 +393,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
   color: #fff;
 }
 
-.layout-header .layout-header-avatar > span {
+.layout-header .layout-header-avatar > div {
   width: 40px;
   height: 40px;
   margin: 15px 0;
@@ -401,7 +401,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
   overflow: hidden;
 }
 
-.layout-header .layout-header-avatar > span:before {
+.layout-header .layout-header-avatar > div:before {
   content: attr(alt);
   display: flex;
   justify-content: center;
