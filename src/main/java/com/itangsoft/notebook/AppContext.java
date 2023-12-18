@@ -2,8 +2,9 @@ package com.itangsoft.notebook;
 
 import com.github.nalukit.nalu.client.context.AbstractModuleContext;
 import com.google.gwt.storage.client.Storage;
-import org.apache.commons.lang3.StringUtils;
 import org.gwtproject.i18n.client.DateTimeFormat;
+
+import java.util.Objects;
 
 /**
  * App Context
@@ -14,7 +15,7 @@ public class AppContext extends AbstractModuleContext {
 
     public String getUserId() {
         String userId = (String) super.getApplicationContext().get("userId");
-        if (StringUtils.isBlank(userId)) {
+        if (Objects.isNull(userId) || userId.isEmpty()) {
             userId = Storage.getSessionStorageIfSupported().getItem("userId");
         }
         return userId;
@@ -27,7 +28,7 @@ public class AppContext extends AbstractModuleContext {
 
     public String getRealName() {
         String realName = (String) super.getApplicationContext().get("realName");
-        if (StringUtils.isBlank(realName)) {
+        if (Objects.isNull(realName) || realName.isEmpty()) {
             realName = Storage.getSessionStorageIfSupported().getItem("realName");
         }
         return realName;

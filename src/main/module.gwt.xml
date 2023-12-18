@@ -13,7 +13,7 @@
     <inherits name="org.dominokit.domino.ui.DominoUI"/>
 
     <!-- Apache Commons stuffs -->
-    <inherits name="org.apache.commons.GWTCommonsLang3"/>
+    <!-- <inherits name="org.apache.commons.GWTCommonsLang3"/> -->
 
     <!-- Specify the app entry point class -->
     <entry-point class="com.itangsoft.notebook.AppEntryPoint"/>

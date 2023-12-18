@@ -46,6 +46,6 @@ public class AppEntryPoint implements EntryPoint {
             element.remove();
         }
 
-        logger.info("DataPlus UI have been initialized.");
+        logger.info("Notebook UI have been initialized.");
     }
 }

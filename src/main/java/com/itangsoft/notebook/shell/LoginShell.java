@@ -12,7 +12,7 @@ import org.dominokit.domino.ui.popover.PopupPosition;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.utils.DominoElement;
 import org.jboss.elemento.Elements;
-import org.jboss.elemento.HTMLContainerBuilder;
+import org.jboss.elemento.HtmlContentBuilder;
 
 /**
  * Login Shell
@@ -42,7 +42,7 @@ public class LoginShell extends AbstractShell<AppContext> {
     }
 
     public DominoElement<HTMLElement> getFooter() {
-        HTMLContainerBuilder<HTMLAnchorElement> versionAnchor = Elements.a().textContent("软件版本");
+        HtmlContentBuilder<HTMLAnchorElement> versionAnchor = Elements.a().textContent("软件版本");
         // Define a tooltip on version anchor
         Tooltip.create(versionAnchor, DominoElement.div()
                 .appendChild(DominoElement.div().textContent("软件版本：" + context.getApplicationVersion()))
@@ -66,7 +66,7 @@ public class LoginShell extends AbstractShell<AppContext> {
             .css("login-footer-links");
 
         DominoElement<HTMLDivElement> copyright = DominoElement.div()
-            .textContent("Copyright © 2023 MOCHOUSOFT.COM 版权所有")
+            .textContent("Copyright © 2024 樹 版权所有")
             .css("login-footer-copyright");
 
         return DominoElement.of(Elements.section())
