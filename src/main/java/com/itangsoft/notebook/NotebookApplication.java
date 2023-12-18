@@ -23,6 +23,6 @@ import com.itangsoft.notebook.plugin.CancelEditorConfirmPresenter;
 @Filters(filterClasses = {LoginFilter.class})
 @Logger(logger = AppLogger.class, clientLogger = DefaultElemental2ClientLogger.class)
 // @Tracker(UpdateClockTracker.class)
-@Version("1.0-SNAPSHOT")
+@Version("1.0.0")
 public interface NotebookApplication extends IsApplication {
 }

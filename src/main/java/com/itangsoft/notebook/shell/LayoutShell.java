@@ -22,7 +22,7 @@ public class LayoutShell extends AbstractShell<AppContext> {
     @Override
     public void attachShell() {
         layout.setLogo(Elements.img("images/logo.png?ts=" + System.currentTimeMillis()).css().element());
-        layout.setTitle("北京大学·数据中台");
+        layout.setTitle("云笔记");
         layout.setAvatar("", Objects.nonNull(this.context.getRealName()) ?
             this.context.getRealName().substring(this.context.getRealName().length() - 1) : " ");
         layout.setVersion(this.context.getApplicationVersion());

@@ -8,6 +8,7 @@ import com.itangsoft.notebook.Slots;
 import elemental2.dom.HTMLAnchorElement;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
+import org.dominokit.domino.ui.popover.Popover;
 import org.dominokit.domino.ui.popover.PopupPosition;
 import org.dominokit.domino.ui.popover.Tooltip;
 import org.dominokit.domino.ui.utils.DominoElement;
@@ -33,7 +34,11 @@ public class LoginShell extends AbstractShell<AppContext> {
     public DominoElement<HTMLElement> getHeader() {
         return DominoElement.of(Elements.section())
             .appendChild(DominoElement.of(Elements.a())
-                .appendChild(DominoElement.of(Elements.img("images/logo_full.png"))))
+                .appendChild(DominoElement.of(Elements.img("images/logo_red.png")))
+                .appendChild(DominoElement.of(Elements.span()).textContent("云笔记 · 欢迎来到我的世界")
+                    .setMarginLeft("10px")
+                    .setFontSize("24px")
+                    .setColor("#9b0000")))
             .css("login-header");
     }
 
@@ -42,10 +47,10 @@ public class LoginShell extends AbstractShell<AppContext> {
     }
 
     public DominoElement<HTMLElement> getFooter() {
-        HtmlContentBuilder<HTMLAnchorElement> versionAnchor = Elements.a().textContent("软件版本");
+        HtmlContentBuilder<HTMLAnchorElement> versionAnchor = Elements.a().textContent("版本说明");
         // Define a tooltip on version anchor
-        Tooltip.create(versionAnchor, DominoElement.div()
-                .appendChild(DominoElement.div().textContent("软件版本：" + context.getApplicationVersion()))
+        Popover.create(versionAnchor, "关于云笔记", DominoElement.div()
+                .appendChild(DominoElement.div().textContent("网站版本：" + context.getApplicationVersion()).setMarginBottom("3px"))
                 .appendChild(DominoElement.div().textContent("发布日期：" + context.getApplicationBuildTimeStr()))
                 .setCssProperty("text-align", "left")
                 .element())

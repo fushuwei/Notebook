@@ -42,7 +42,7 @@ public class LoginComponent
         Carousel carousel = Carousel.create()
             .appendChild(Slide.create("https://user-images.githubusercontent.com/4270380/103492828-a06d1200-4e68-11eb-9287-ef830f575d3e.png"))
             .appendChild(Slide.create("https://tdesign.gtimg.com/tdesign-starter/docs/starter-docs-industry-light.png"))
-            .startAutoSlide(5000);
+            .startAutoSlide(10000);
 
         return DominoElement.div().appendChild(carousel).css("login-carousel");
     }

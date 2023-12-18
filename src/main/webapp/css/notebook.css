@@ -67,14 +67,20 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 }
 
 .login-header a {
+  display: flex;
   margin-left: 0;
   text-decoration: none;
   cursor: pointer;
 }
 
 .login-header a img {
-  width: 238px;
+  /* width: 238px; */
+  width: 69px;
   height: 69px;
+}
+
+.login-header a span {
+  line-height: 69px;
 }
 
 #login-content {
