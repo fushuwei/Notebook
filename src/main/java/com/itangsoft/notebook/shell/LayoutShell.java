@@ -4,10 +4,8 @@ import com.github.nalukit.nalu.client.component.AbstractShell;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.itangsoft.notebook.AppContext;
 import com.itangsoft.notebook.Routes;
-import com.itangsoft.notebook.component.applayout.AppLayout;
+import com.itangsoft.notebook.layout.AppLayout;
 import org.jboss.elemento.Elements;
-
-import java.util.Objects;
 
 /**
  * Layout Shell

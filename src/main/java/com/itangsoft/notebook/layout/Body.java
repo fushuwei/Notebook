@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.component.applayout;
+package com.itangsoft.notebook.layout;
 
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.utils.BaseDominoElement;
