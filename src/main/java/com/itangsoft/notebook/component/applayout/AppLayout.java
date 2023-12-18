@@ -133,6 +133,15 @@ public class AppLayout extends BaseDominoElement<HTMLDivElement, AppLayout> {
     }
 
     /**
+     * 设置当前登录用户的头像
+     *
+     * @param word 头像对应的文字
+     */
+    public void setAvatar(String word) {
+        header.getAvatar().clearElement().appendChild(DominoElement.of(Elements.span()).setAttribute("alt", word));
+    }
+
+    /**
      * 在页脚中显示软件版本
      *
      * @param version 版本号

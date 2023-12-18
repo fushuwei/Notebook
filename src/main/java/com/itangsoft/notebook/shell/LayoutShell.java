@@ -23,8 +23,8 @@ public class LayoutShell extends AbstractShell<AppContext> {
     public void attachShell() {
         layout.setLogo(Elements.img("images/logo.png?ts=" + System.currentTimeMillis()).css().element());
         layout.setTitle("云笔记");
-        layout.setAvatar("", Objects.nonNull(this.context.getRealName()) ?
-            this.context.getRealName().substring(this.context.getRealName().length() - 1) : " ");
+        layout.setAvatar("樹");
+        // layout.setAvatar("", Objects.nonNull(this.context.getRealName()) ? this.context.getRealName().substring(this.context.getRealName().length() - 1) : " ");
         layout.setVersion(this.context.getApplicationVersion());
     }
 
