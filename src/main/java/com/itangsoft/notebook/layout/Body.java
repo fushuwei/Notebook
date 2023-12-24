@@ -15,27 +15,21 @@ public class Body extends BaseDominoElement<HTMLElement, Body> {
     DominoElement<HTMLElement> root = DominoElement.of(Elements.section()).css("layout-body");
 
     DominoElement<HTMLElement> mainContainer = DominoElement.of(Elements.section()).css("layout-body-main");
-    BottomToolbar bottomToolbar = BottomToolbar.create();
 
-    LeftSidebar leftSidebar = LeftSidebar.create();
     LeftPanel leftPanel = LeftPanel.create();
     Content content = Content.create();
     RightPanel rightPanel = RightPanel.create();
-    RightSidebar rightSidebar = RightSidebar.create();
 
 
     private Body() {
         init(this);
 
         root.appendChild(mainContainer
-                .appendChild(leftSidebar)
-                .appendChild(DominoElement.div()
-                    .appendChild(leftPanel)
-                    .appendChild(content)
-                    .appendChild(rightPanel)
-                    .css("layout-middle-container"))
-                .appendChild(rightSidebar))
-            .appendChild(bottomToolbar);
+            .appendChild(DominoElement.div()
+                .appendChild(leftPanel)
+                .appendChild(content)
+                .appendChild(rightPanel)
+                .css("layout-middle-container")));
     }
 
     public static Body create() {
