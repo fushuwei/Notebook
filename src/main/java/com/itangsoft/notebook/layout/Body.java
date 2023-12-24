@@ -40,4 +40,16 @@ public class Body extends BaseDominoElement<HTMLElement, Body> {
     public HTMLElement element() {
         return root.element();
     }
+
+    public LeftPanel getLeftPanel() {
+        return leftPanel;
+    }
+
+    public Content getContent() {
+        return content;
+    }
+
+    public RightPanel getRightPanel() {
+        return rightPanel;
+    }
 }

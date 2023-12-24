@@ -13,22 +13,8 @@ public class LeftPanel extends BaseDominoElement<HTMLDivElement, LeftPanel> {
 
     DominoElement<HTMLDivElement> root = DominoElement.div().css("layout-left-panel");
 
-    DominoElement<HTMLDivElement> navigatePanel = DominoElement.div();
-    DominoElement<HTMLDivElement> favoritePanel = DominoElement.div();
-
     private LeftPanel() {
         init(this);
-
-        // 设置 Navigate Panel
-        navigatePanel.appendChild(DominoElement.div())
-            .appendChild(DominoElement.div());
-
-        // 设置 Favorite Panel
-        favoritePanel.appendChild(DominoElement.div())
-            .appendChild(DominoElement.div()).hide();
-
-        root.appendChild(navigatePanel)
-            .appendChild(favoritePanel);
     }
 
     public static LeftPanel create() {

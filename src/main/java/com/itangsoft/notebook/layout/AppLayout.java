@@ -204,4 +204,16 @@ public class AppLayout extends BaseDominoElement<HTMLDivElement, AppLayout> {
     public interface LayoutHandler {
         void handle(AppLayout layout);
     }
+
+    public LeftPanel getLeftPanel() {
+        return body.getLeftPanel();
+    }
+
+    public Content getContent() {
+        return body.getContent();
+    }
+
+    public RightPanel getRightPanel() {
+        return body.getRightPanel();
+    }
 }

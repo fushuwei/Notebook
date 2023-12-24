@@ -4,6 +4,7 @@ import com.github.nalukit.nalu.client.component.AbstractShell;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.itangsoft.notebook.AppContext;
 import com.itangsoft.notebook.Routes;
+import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.layout.AppLayout;
 import org.jboss.elemento.Elements;
 
@@ -19,11 +20,17 @@ public class LayoutShell extends AbstractShell<AppContext> {
 
     @Override
     public void attachShell() {
+        // 设置页眉
         layout.setLogo(Elements.img("images/logo.png?ts=" + System.currentTimeMillis()).css().element());
         layout.setTitle("云笔记");
         layout.setAvatar("樹");
-        // layout.setAvatar("", Objects.nonNull(this.context.getRealName()) ? this.context.getRealName().substring(this.context.getRealName().length() - 1) : " ");
         layout.setVersion(this.context.getApplicationVersion());
+
+        // 设置左侧面板
+        layout.getLeftPanel().setId(Slots.SELECTOR_LAYOUT_LEFT_PANEL);
+
+        // 设置主面板
+        layout.getContent().setId(Slots.SELECTOR_LAYOUT_CONTENT);
     }
 
     @Override
