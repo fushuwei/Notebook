@@ -25,33 +25,31 @@ public class LeftPanelComponent
     public void render() {
         DominoElement<HTMLDivElement> navigatePanel = DominoElement.div().css("aaaaaaaaaaaa");
 
-        Tree<String> foldersExpand = Tree.create("我的文件夹");
-
-        TreeItem.create("test");
-            // .appendChild(TreeItem.create("Folder 1", Icons.ALL.folder())
-                    // .setExpandIcon(Icons.ALL.folder_open())
-                // .appendChild(TreeItem.create("Folder 1-1", Icons.ALL.folder())
-                //     .setExpandIcon(Icons.ALL.folder_open())
-                //     .appendChild(TreeItem.create("File 1", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 2", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 3", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 4", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                // ).appendChild(TreeItem.create("Folder 1-2", Icons.ALL.folder())
-                //     .setExpandIcon(Icons.ALL.folder_open())
-                //     .appendChild(TreeItem.create("File 1", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 2", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 3", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                //     .appendChild(TreeItem.create("File 4", Icons.ALL.insert_drive_file())
-                //         .setActiveIcon(Icons.ALL.description()))
-                // )
-            // );
+        Tree<String> foldersExpand = Tree.create("我的文件夹")
+            .appendChild(TreeItem.create("Folder 1", Icons.ALL.folder())
+                    .setExpandIcon(Icons.ALL.folder_open())
+                .appendChild(TreeItem.create("Folder 1-1", Icons.ALL.folder())
+                    .setExpandIcon(Icons.ALL.folder_open())
+                    .appendChild(TreeItem.create("File 1", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 2", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 3", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 4", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                ).appendChild(TreeItem.create("Folder 1-2", Icons.ALL.folder())
+                    .setExpandIcon(Icons.ALL.folder_open())
+                    .appendChild(TreeItem.create("File 1", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 2", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 3", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                    .appendChild(TreeItem.create("File 4", Icons.ALL.insert_drive_file())
+                        .setActiveIcon(Icons.ALL.description()))
+                )
+            );
 
         navigatePanel.appendChild(foldersExpand);
 
