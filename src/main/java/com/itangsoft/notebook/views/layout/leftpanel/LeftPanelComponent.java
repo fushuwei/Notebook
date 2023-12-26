@@ -72,14 +72,6 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         initElement(navigatePanel.element());
     }
 
-    public void buildMenuTree(TreeItem<String> treeItem, JSONArray jMenuArray) {
-        for (int i = 0; i < jMenuArray.size(); i++) {
-            JSONObject jMenu = (JSONObject) jMenuArray.get(i);
-            TreeItem<String> subTreeItem = buildTreeItem(jMenu);
-            treeItem.appendChild(subTreeItem);
-        }
-    }
-
     public TreeItem<String> buildTreeItem(JSONObject jMenu) {
         TreeItem<String> treeItem;
 
@@ -97,5 +89,13 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         }
 
         return treeItem;
+    }
+
+    public void buildMenuTree(TreeItem<String> treeItem, JSONArray jMenuArray) {
+        for (int i = 0; i < jMenuArray.size(); i++) {
+            JSONObject jMenu = (JSONObject) jMenuArray.get(i);
+            TreeItem<String> subTreeItem = buildTreeItem(jMenu);
+            treeItem.appendChild(subTreeItem);
+        }
     }
 }
