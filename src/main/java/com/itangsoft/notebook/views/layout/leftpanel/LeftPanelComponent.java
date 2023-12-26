@@ -49,22 +49,24 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                     .setAutoCollapse(false);
 
                 try {
-                    JSONArray jMenuArray = (JSONArray) JSONParser.parseStrict(response.getText());
+                    JSONArray jMenuArray = JSONParser.parseStrict(response.getText()).isArray();
 
                     for (int i = 0; i < jMenuArray.size(); i++) {
-                        JSONObject jMenu = (JSONObject) jMenuArray.get(i);
+                        JSONObject jMenu = jMenuArray.get(i).isObject();
 
                         TreeItem<String> treeItem;
 
                         // markdown属性为空表示当前菜单是文件夹
-                        if (jMenu.get("markdown") == null || "".equals(String.valueOf(jMenu.get("markdown")))) {
-                            treeItem = TreeItem.create(String.valueOf(jMenu.get("name")), Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
+                        if ("".equals(jMenu.get("markdown").isString().stringValue())) {
+                            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                                Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
                         } else {
-                            treeItem = TreeItem.create(String.valueOf(jMenu.get("name")), Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
+                            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                                Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
                         }
 
-                        if (jMenu.get("children") != null && ((JSONArray) JSONParser.parseStrict(String.valueOf(jMenu.get("children")))).size() > 0) {
-                            renderMenu(treeItem, String.valueOf(jMenu.get("children")));
+                        if (jMenu.get("children").isArray().size() > 0) {
+                            renderMenu(treeItem, jMenu.get("children").isArray());
                         }
 
                         menuTree.appendChild(treeItem);
@@ -85,24 +87,23 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         initElement(navigatePanel.element());
     }
 
-    public void renderMenu(TreeItem<String> treeItem, String children) {
-        JSONArray jMenuArray = (JSONArray) JSONParser.parseStrict(children);
+    public void renderMenu(TreeItem<String> treeItem, JSONArray jMenuArray) {
         for (int i = 0; i < jMenuArray.size(); i++) {
             JSONObject jMenu = (JSONObject) jMenuArray.get(i);
 
             TreeItem<String> subTreeItem;
 
-            logger.info(jMenu.get("markdown").toString());
-
             // markdown属性为空表示当前菜单是文件夹
-            if (jMenu.get("markdown") == null || "".equals(String.valueOf(jMenu.get("markdown")))) {
-                subTreeItem = TreeItem.create(String.valueOf(jMenu.get("name")), Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
+            if ("".equals(jMenu.get("markdown").isString().stringValue())) {
+                subTreeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                    Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
             } else {
-                subTreeItem = TreeItem.create(String.valueOf(jMenu.get("name")), Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
+                subTreeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                    Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
             }
 
-            if (jMenu.get("children") != null && ((JSONArray) JSONParser.parseStrict(jMenu.get("children").toString())).size() > 0) {
-                renderMenu(subTreeItem, jMenu.get("children").toString());
+            if (jMenu.get("children").isArray().size() > 0) {
+                renderMenu(subTreeItem, jMenu.get("children").isArray());
             }
 
             treeItem.appendChild(subTreeItem);
