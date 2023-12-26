@@ -36,6 +36,11 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
     public void render() {
         DominoElement<HTMLDivElement> navigatePanel = DominoElement.div();
 
+        Tree<String> menuTree = Tree.create("我的笔记")
+            .setAutoCollapse(false)
+            .enableFolding()
+            .enableSearch();
+
         HttpClient.get(GWT.getHostPageBaseURL() + "data/menu.json", null, new RequestCallback() {
             @Override
             public void onResponseReceived(Request request, Response response) {
@@ -44,20 +49,14 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                     return;
                 }
 
-                Tree<String> menuTree = Tree.create("我的笔记")
-                    .enableSearch()
-                    .setAutoCollapse(false);
-
                 try {
                     JSONArray jMenuArray = JSONParser.parseStrict(response.getText()).isArray();
 
                     for (int i = 0; i < jMenuArray.size(); i++) {
                         JSONObject jMenu = jMenuArray.get(i).isObject();
-                        TreeItem<String> treeItem = buildTreeItem(jMenu);
+                        TreeItem<String> treeItem = buildMenuItem(jMenu);
                         menuTree.appendChild(treeItem);
                     }
-
-                    navigatePanel.appendChild(menuTree);
                 } catch (Exception e) {
                     logger.error("菜单渲染失败", e);
                 }
@@ -69,10 +68,12 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
             }
         });
 
+        navigatePanel.appendChild(menuTree);
+
         initElement(navigatePanel.element());
     }
 
-    public TreeItem<String> buildTreeItem(JSONObject jMenu) {
+    public TreeItem<String> buildMenuItem(JSONObject jMenu) {
         TreeItem<String> treeItem;
 
         // 判断是目录还是文件
@@ -80,7 +81,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
 
-            // 判断目录是否展开状态
+            // 判断当前目录是否展开状态
             if (jMenu.get("expand").isBoolean().booleanValue()) {
                 treeItem.expand();
             }
@@ -99,7 +100,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
     public void buildMenuTree(TreeItem<String> treeItem, JSONArray jMenuArray) {
         for (int i = 0; i < jMenuArray.size(); i++) {
             JSONObject jMenu = (JSONObject) jMenuArray.get(i);
-            TreeItem<String> subTreeItem = buildTreeItem(jMenu);
+            TreeItem<String> subTreeItem = buildMenuItem(jMenu);
             treeItem.appendChild(subTreeItem);
         }
     }
