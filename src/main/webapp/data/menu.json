@@ -1,62 +1,74 @@
 [
     {
-        "name": "全部",
-        "markdown": "",
+        "name": "我的文件夹",
+        "folder": true,
+        "expand": true,
         "children": [
             {
                 "name": "开发",
-                "markdown": "",
+                "folder": true,
+                "expand": false,
                 "children": [
                     {
                         "name": "JAVA",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     },
                     {
                         "name": "Python",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     },
                     {
                         "name": "NodeJS",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     }
                 ]
             },
             {
                 "name": "运维",
-                "markdown": "",
+                "folder": true,
+                "expand": false,
                 "children": [
                     {
                         "name": "基础",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     },
                     {
                         "name": "网络",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     },
                     {
                         "name": "容器化",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     }
                 ]
             },
             {
                 "name": "测试",
-                "markdown": "",
+                "folder": true,
+                "expand": false,
                 "children": [
                     {
                         "name": "自动化测试",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     },
                     {
                         "name": "渗透测试",
-                        "markdown": "",
+                        "folder": true,
+                        "expand": false,
                         "children": []
                     }
                 ]

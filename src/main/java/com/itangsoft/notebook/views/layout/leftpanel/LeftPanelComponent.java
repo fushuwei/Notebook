@@ -44,7 +44,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                     return;
                 }
 
-                Tree<String> menuTree = Tree.create("我的文件夹")
+                Tree<String> menuTree = Tree.create("我的笔记")
                     .enableSearch()
                     .setAutoCollapse(false);
 
@@ -75,10 +75,15 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
     public TreeItem<String> buildTreeItem(JSONObject jMenu) {
         TreeItem<String> treeItem;
 
-        // markdown属性为空表示当前菜单是文件夹
-        if ("".equals(jMenu.get("markdown").isString().stringValue())) {
+        // 判断是目录还是文件
+        if (jMenu.get("folder").isBoolean().booleanValue()) {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
+
+            // 判断目录是否展开状态
+            if (jMenu.get("expand").isBoolean().booleanValue()) {
+                treeItem.expand();
+            }
         } else {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
