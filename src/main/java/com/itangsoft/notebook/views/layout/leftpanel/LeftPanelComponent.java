@@ -53,22 +53,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
 
                     for (int i = 0; i < jMenuArray.size(); i++) {
                         JSONObject jMenu = jMenuArray.get(i).isObject();
-
-                        TreeItem<String> treeItem;
-
-                        // markdown属性为空表示当前菜单是文件夹
-                        if ("".equals(jMenu.get("markdown").isString().stringValue())) {
-                            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
-                                Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
-                        } else {
-                            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
-                                Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
-                        }
-
-                        if (jMenu.get("children").isArray().size() > 0) {
-                            renderMenu(treeItem, jMenu.get("children").isArray());
-                        }
-
+                        TreeItem<String> treeItem = buildTreeItem(jMenu);
                         menuTree.appendChild(treeItem);
                     }
 
@@ -87,26 +72,30 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         initElement(navigatePanel.element());
     }
 
-    public void renderMenu(TreeItem<String> treeItem, JSONArray jMenuArray) {
+    public void buildMenuTree(TreeItem<String> treeItem, JSONArray jMenuArray) {
         for (int i = 0; i < jMenuArray.size(); i++) {
             JSONObject jMenu = (JSONObject) jMenuArray.get(i);
-
-            TreeItem<String> subTreeItem;
-
-            // markdown属性为空表示当前菜单是文件夹
-            if ("".equals(jMenu.get("markdown").isString().stringValue())) {
-                subTreeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
-                    Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
-            } else {
-                subTreeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
-                    Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
-            }
-
-            if (jMenu.get("children").isArray().size() > 0) {
-                renderMenu(subTreeItem, jMenu.get("children").isArray());
-            }
-
+            TreeItem<String> subTreeItem = buildTreeItem(jMenu);
             treeItem.appendChild(subTreeItem);
         }
+    }
+
+    public TreeItem<String> buildTreeItem(JSONObject jMenu) {
+        TreeItem<String> treeItem;
+
+        // markdown属性为空表示当前菜单是文件夹
+        if ("".equals(jMenu.get("markdown").isString().stringValue())) {
+            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
+        } else {
+            treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
+                Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
+        }
+
+        if (jMenu.get("children").isArray().size() > 0) {
+            buildMenuTree(treeItem, jMenu.get("children").isArray());
+        }
+
+        return treeItem;
     }
 }

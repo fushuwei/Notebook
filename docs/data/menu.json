@@ -1,0 +1,66 @@
+[
+    {
+        "name": "全部",
+        "markdown": "",
+        "children": [
+            {
+                "name": "开发",
+                "markdown": "",
+                "children": [
+                    {
+                        "name": "JAVA",
+                        "markdown": "",
+                        "children": []
+                    },
+                    {
+                        "name": "Python",
+                        "markdown": "",
+                        "children": []
+                    },
+                    {
+                        "name": "NodeJS",
+                        "markdown": "",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "name": "运维",
+                "markdown": "",
+                "children": [
+                    {
+                        "name": "基础",
+                        "markdown": "",
+                        "children": []
+                    },
+                    {
+                        "name": "网络",
+                        "markdown": "",
+                        "children": []
+                    },
+                    {
+                        "name": "容器化",
+                        "markdown": "",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "name": "测试",
+                "markdown": "",
+                "children": [
+                    {
+                        "name": "自动化测试",
+                        "markdown": "",
+                        "children": []
+                    },
+                    {
+                        "name": "渗透测试",
+                        "markdown": "",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+]
