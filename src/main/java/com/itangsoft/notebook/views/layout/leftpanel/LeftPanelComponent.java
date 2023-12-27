@@ -82,7 +82,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                 Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.file_check_outline_mdi());
 
             // 对文件节点添加点击事件
-            treeItem.addClickListener(evt -> getController().openFile(jMenu.get("name").isString().stringValue()));
+            treeItem.addClickListener(evt -> getController().openFile(jMenu.get("markdown").isString().stringValue()));
         }
 
         // 判断是否存在子菜单

@@ -19,6 +19,6 @@ public class ContentComponent
 
     @Override
     public void render() {
-        initElement(DominoElement.div().element());
+        initElement(DominoElement.div().textContent(getController().getFileName()).element());
     }
 }

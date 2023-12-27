@@ -11,5 +11,7 @@ import elemental2.dom.HTMLElement;
 public interface IContentComponent extends IsComponent<IContentComponent.Controller, HTMLElement> {
 
     interface Controller extends IsComponent.Controller {
+
+        public String getFileName();
     }
 }

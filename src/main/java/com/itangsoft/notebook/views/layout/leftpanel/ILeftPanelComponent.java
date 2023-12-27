@@ -12,6 +12,6 @@ public interface ILeftPanelComponent extends IsComponent<ILeftPanelComponent.Con
 
     interface Controller extends IsComponent.Controller {
 
-        void openFile(String file);
+        void openFile(String fileName);
     }
 }

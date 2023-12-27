@@ -26,8 +26,8 @@ public class LeftPanelController
     }
 
     @Override
-    public void openFile(String file) {
-        logger.info(file);
-        this.router.route(Routes.ROUTE_HOME);
+    public void openFile(String fileName) {
+        logger.info(fileName);
+        this.router.route(Routes.ROUTE_CONTENT, fileName);
     }
 }
