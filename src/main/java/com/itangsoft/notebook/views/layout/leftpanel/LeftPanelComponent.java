@@ -8,9 +8,7 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.user.client.Window;
 import com.itangsoft.notebook.utils.HttpClient;
-import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.tree.Tree;
@@ -34,18 +32,16 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
 
     @Override
     public void render() {
-        DominoElement<HTMLDivElement> navigatePanel = DominoElement.div();
-
         Tree<String> menuTree = Tree.create("我的笔记")
             .setAutoCollapse(false)
-            .enableFolding()
-            .enableSearch();
+            .enableSearch()
+            .enableFolding();
 
         HttpClient.get(GWT.getHostPageBaseURL() + "data/menu.json", null, new RequestCallback() {
             @Override
             public void onResponseReceived(Request request, Response response) {
                 if (response.getStatusCode() != Response.SC_OK) {
-                    Window.alert("Error: " + response.getStatusCode() + " -> " + response.getStatusText());
+                    logger.error("Error: " + response.getStatusCode() + " -> " + response.getStatusText());
                     return;
                 }
 
@@ -64,13 +60,11 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
 
             @Override
             public void onError(Request request, Throwable throwable) {
-                Window.alert("Error: " + throwable);
+                logger.error("Error: ", throwable);
             }
         });
 
-        navigatePanel.appendChild(menuTree);
-
-        initElement(navigatePanel.element());
+        initElement(DominoElement.div().appendChild(menuTree).element());
     }
 
     public TreeItem<String> buildMenuItem(JSONObject jMenu) {
@@ -80,18 +74,18 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         if (jMenu.get("folder").isBoolean().booleanValue()) {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
-
-            // 判断当前目录是否展开状态
-            if (jMenu.get("expand").isBoolean().booleanValue()) {
-                treeItem.expand();
-            }
         } else {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
         }
 
-        if (jMenu.get("children").isArray().size() > 0) {
+        if (!"null" .equals(String.valueOf(jMenu.get("children"))) && jMenu.get("children").isArray().size() > 0) {
             buildMenuTree(treeItem, jMenu.get("children").isArray());
+        }
+
+        // 判断当前目录是否展开状态
+        if (jMenu.get("expand").isBoolean().booleanValue()) {
+            treeItem.expand();
         }
 
         return treeItem;

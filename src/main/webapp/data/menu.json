@@ -38,7 +38,14 @@
                         "name": "基础",
                         "folder": true,
                         "expand": false,
-                        "children": []
+                        "children": [
+                            {
+                                "name": "基础命令安装与配置",
+                                "folder": false,
+                                "expand": false,
+                                "markdown": ""
+                            }
+                        ]
                     },
                     {
                         "name": "网络",
