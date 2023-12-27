@@ -43,7 +43,13 @@
                                 "name": "基础命令安装与配置",
                                 "folder": false,
                                 "expand": false,
-                                "markdown": ""
+                                "markdown": "基础命令安装与配置.md"
+                            },
+                            {
+                                "name": "防火墙",
+                                "folder": false,
+                                "expand": false,
+                                "markdown": "防火墙.md"
                             }
                         ]
                     },
