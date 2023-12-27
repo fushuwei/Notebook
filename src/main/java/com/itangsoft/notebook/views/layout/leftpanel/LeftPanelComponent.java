@@ -46,13 +46,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                 }
 
                 try {
-                    JSONArray jMenuArray = JSONParser.parseStrict(response.getText()).isArray();
-
-                    for (int i = 0; i < jMenuArray.size(); i++) {
-                        JSONObject jMenu = jMenuArray.get(i).isObject();
-                        TreeItem<String> treeItem = buildMenuItem(jMenu);
-                        menuTree.appendChild(treeItem);
-                    }
+                    buildMenuTree(menuTree, response.getText());
                 } catch (Exception e) {
                     logger.error("菜单渲染失败", e);
                 }
@@ -67,6 +61,15 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         initElement(DominoElement.div().appendChild(menuTree).element());
     }
 
+    public void buildMenuTree(Tree<String> menuTree, String menuData) {
+        JSONArray jMenuArray = JSONParser.parseStrict(menuData).isArray();
+        for (int i = 0; i < jMenuArray.size(); i++) {
+            JSONObject jMenu = jMenuArray.get(i).isObject();
+            TreeItem<String> treeItem = buildMenuItem(jMenu);
+            menuTree.appendChild(treeItem);
+        }
+    }
+
     public TreeItem<String> buildMenuItem(JSONObject jMenu) {
         TreeItem<String> treeItem;
 
@@ -77,10 +80,19 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         } else {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
                 Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.file_check_outline_mdi());
+
+            // 对文件节点添加点击事件
+            treeItem.addClickListener(evt -> logger.info(jMenu.get("name").isString().stringValue()));
         }
 
-        if (!"null" .equals(String.valueOf(jMenu.get("children"))) && jMenu.get("children").isArray().size() > 0) {
-            buildMenuTree(treeItem, jMenu.get("children").isArray());
+        // 判断是否存在子菜单
+        if (!"null".equals(String.valueOf(jMenu.get("children"))) && jMenu.get("children").isArray().size() > 0) {
+            JSONArray jSubMenuArray = jMenu.get("children").isArray();
+            for (int j = 0; j < jSubMenuArray.size(); j++) {
+                JSONObject jSubMenu = jSubMenuArray.get(j).isObject();
+                TreeItem<String> subTreeItem = buildMenuItem(jSubMenu);
+                treeItem.appendChild(subTreeItem);
+            }
         }
 
         // 判断当前目录是否展开状态
@@ -89,13 +101,5 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         }
 
         return treeItem;
-    }
-
-    public void buildMenuTree(TreeItem<String> treeItem, JSONArray jMenuArray) {
-        for (int i = 0; i < jMenuArray.size(); i++) {
-            JSONObject jMenu = (JSONObject) jMenuArray.get(i);
-            TreeItem<String> subTreeItem = buildMenuItem(jMenu);
-            treeItem.appendChild(subTreeItem);
-        }
     }
 }
