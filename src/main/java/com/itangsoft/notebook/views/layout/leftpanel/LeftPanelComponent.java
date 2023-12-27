@@ -76,7 +76,7 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
                 Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
         } else {
             treeItem = TreeItem.create(jMenu.get("name").isString().stringValue(),
-                Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.description());
+                Icons.ALL.insert_drive_file()).setActiveIcon(Icons.ALL.file_check_outline_mdi());
         }
 
         if (!"null" .equals(String.valueOf(jMenu.get("children"))) && jMenu.get("children").isArray().size() > 0) {
