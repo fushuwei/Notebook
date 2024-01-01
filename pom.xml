@@ -23,8 +23,6 @@
         <domino-ui.version>1.0.0-RC19</domino-ui.version>
         <elemental2.version>1.2.1</elemental2.version>
         <akasha.version>0.31</akasha.version>
-        <gwt-commons-lang3.version>3.14.0-0</gwt-commons-lang3.version>
-        <htmlunit.version>2.70.0</htmlunit.version>
         <slf4j-api.version>2.0.9</slf4j-api.version>
 
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -112,20 +110,6 @@
                 <version>${akasha.version}</version>
             </dependency>
 
-            <!-- Apache Commons -->
-            <!-- <dependency> -->
-            <!--     <groupId>de.knightsoft-net</groupId> -->
-            <!--     <artifactId>gwt-commons-lang3</artifactId> -->
-            <!--     <version>${gwt-commons-lang3.version}</version> -->
-            <!-- </dependency> -->
-
-            <!-- Htmlunit -->
-            <!-- <dependency> -->
-            <!--     <groupId>net.sourceforge.htmlunit</groupId> -->
-            <!--     <artifactId>htmlunit</artifactId> -->
-            <!--     <version>${htmlunit.version}</version> -->
-            <!-- </dependency> -->
-
             <!-- slf4j -->
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -144,12 +128,6 @@
         <dependency>
             <groupId>org.gwtproject</groupId>
             <artifactId>gwt-dev</artifactId>
-            <!-- <exclusions> -->
-            <!--     <exclusion> -->
-            <!--         <groupId>net.sourceforge.htmlunit</groupId> -->
-            <!--         <artifactId>htmlunit</artifactId> -->
-            <!--     </exclusion> -->
-            <!-- </exclusions> -->
         </dependency>
 
         <!-- Nalu -->
@@ -187,18 +165,6 @@
             <artifactId>domino-ui</artifactId>
             <classifier>sources</classifier>
         </dependency>
-
-        <!-- Apache Commons -->
-        <!-- <dependency> -->
-        <!--     <groupId>de.knightsoft-net</groupId> -->
-        <!--     <artifactId>gwt-commons-lang3</artifactId> -->
-        <!-- </dependency> -->
-
-        <!-- Htmlunit -->
-        <!-- <dependency> -->
-        <!--     <groupId>net.sourceforge.htmlunit</groupId> -->
-        <!--     <artifactId>htmlunit</artifactId> -->
-        <!-- </dependency> -->
 
         <!-- slf4j -->
         <dependency>
