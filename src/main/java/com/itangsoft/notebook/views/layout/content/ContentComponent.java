@@ -17,9 +17,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author fushuwei
  */
-public class ContentComponent
-    extends AbstractComponent<IContentComponent.Controller, HTMLElement>
-    implements IContentComponent {
+public class ContentComponent extends AbstractComponent<IContentComponent.Controller, HTMLElement> implements IContentComponent {
 
     private static final Logger logger = LoggerFactory.getLogger(ContentComponent.class);
 
@@ -29,7 +27,7 @@ public class ContentComponent
 
     @Override
     public void render() {
-        DominoElement<HTMLDivElement> contentDiv = DominoElement.div();
+        DominoElement<HTMLDivElement> contentDiv = DominoElement.div().css("markdown-body");
 
         String mdUrl = GWT.getHostPageBaseURL() + "files/" + getController().getFileName();
         HttpClient.get(mdUrl, null, new RequestCallback() {
@@ -41,7 +39,8 @@ public class ContentComponent
                 }
 
                 try {
-                    contentDiv.setInnerHtml(response.getText());
+                    String convertedHtml = markdown2Html(response.getText());
+                    contentDiv.setInnerHtml(convertedHtml);
                 } catch (Exception e) {
                     logger.error("Markdown笔记渲染失败", e);
                 }
@@ -55,4 +54,8 @@ public class ContentComponent
 
         initElement(DominoElement.div().appendChild(contentDiv).element());
     }
+
+    public native String markdown2Html(String text) /*-{
+        return $wnd.marked.parse(text);
+    }-*/;
 }
