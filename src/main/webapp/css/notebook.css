@@ -594,6 +594,10 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 }
 
 .layout-middle-container .layout-content > div {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  background-color: #fff;
 }
 
 /* ===================================================================================================== */
