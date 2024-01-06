@@ -25,8 +25,8 @@ public class LoginController
     @Override
     public void login(String username, String password, String captcha) {
         if ("admin".equals(username) && "admin.123".equals(password)) {
-            this.context.setUserId(username);
-            this.context.setRealName(username);
+            this.context.setUserName(username);
+            this.context.setRealName("樹");
 
             this.router.route(Routes.ROUTE_HOME);
 

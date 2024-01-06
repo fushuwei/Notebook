@@ -3,6 +3,8 @@ package com.itangsoft.notebook.filter;
 import com.github.nalukit.nalu.client.filter.AbstractFilter;
 import com.itangsoft.notebook.AppContext;
 import com.itangsoft.notebook.Routes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Login Filter
@@ -11,9 +13,11 @@ import com.itangsoft.notebook.Routes;
  */
 public class LoginFilter extends AbstractFilter<AppContext> {
 
+    private static final Logger logger = LoggerFactory.getLogger(LoginFilter.class);
+
     @Override
     public boolean filter(String route, String... params) {
-        return true;
+        return Routes.ROUTE_LOGIN.equals(route) || "admin".equals(this.context.getUserName());
     }
 
     @Override

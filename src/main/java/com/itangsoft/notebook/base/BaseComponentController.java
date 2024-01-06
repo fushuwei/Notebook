@@ -16,10 +16,10 @@ public class BaseComponentController<V extends IsComponent<?, HTMLElement>>
     implements IsComponent.Controller {
 
     protected void checkToken(ControllerLoader loader) {
-        if (this.context.getUserId() == null) {
-            this.router.route(Routes.ROUTE_LOGIN);
-        } else {
+        if ("admin".equals(this.context.getUserName())) {
             loader.continueLoading();
+        } else {
+            this.router.route(Routes.ROUTE_LOGIN);
         }
     }
 }

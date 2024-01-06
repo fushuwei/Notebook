@@ -20,9 +20,9 @@ public class CancelEditorConfirmPresenter implements IsCustomConfirmPresenter {
 
     @Override
     public void confirm(String message) {
-        MessageDialog messageDialog = MessageDialog.createMessage("You will lost all your changes!", "This can not reverted!");
+        MessageDialog messageDialog = MessageDialog.createMessage("您将丢失所有更改！", "这将无法恢复！");
 
-        Button revertButton = Button.create("Revert")
+        Button revertButton = Button.create("还原")
             .linkify()
             .setColor(Color.RED)
             .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
@@ -31,7 +31,7 @@ public class CancelEditorConfirmPresenter implements IsCustomConfirmPresenter {
                 confirmHandler.onOk();
             });
 
-        Button cancelButton = Button.create("Cancel")
+        Button cancelButton = Button.create("取消")
             .linkify()
             .styler(style -> style.addCss(MessageDialogStyles.DIALOG_BUTTON))
             .addClickListener(e -> {

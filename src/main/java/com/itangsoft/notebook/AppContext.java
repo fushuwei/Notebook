@@ -26,6 +26,19 @@ public class AppContext extends AbstractModuleContext {
         Storage.getSessionStorageIfSupported().setItem("userId", userId);
     }
 
+    public String getUserName() {
+        String username = (String) super.getApplicationContext().get("username");
+        if (Objects.isNull(username) || username.isEmpty()) {
+            username = Storage.getSessionStorageIfSupported().getItem("username");
+        }
+        return username;
+    }
+
+    public void setUserName(String username) {
+        super.getApplicationContext().put("username", username);
+        Storage.getSessionStorageIfSupported().setItem("username", username);
+    }
+
     public String getRealName() {
         String realName = (String) super.getApplicationContext().get("realName");
         if (Objects.isNull(realName) || realName.isEmpty()) {

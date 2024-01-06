@@ -23,7 +23,7 @@ public class LayoutShell extends AbstractShell<AppContext> {
         // 设置页眉
         layout.setLogo(Elements.img("images/logo.png?ts=" + System.currentTimeMillis()).css().element());
         layout.setTitle("云笔记");
-        layout.setAvatar("樹");
+        layout.setAvatar(this.context.getRealName());
         layout.setVersion(this.context.getApplicationVersion());
 
         // 设置左侧面板
