@@ -1,29 +1,19 @@
 [
-    {
-        "name": "我的文件夹", "folder": true, "expand": true, "children": [
-            {"name": "开发", "folder": true, "expand": false, "children": [
-                {"name": "JAVA", "folder": true, "expand": false, "children": []},
-                {"name": "Python", "folder": true, "expand": false, "children": []},
-                {"name": "NodeJS", "folder": true, "expand": false, "children": []}
-            ]},
-            {"name": "运维", "folder": true, "expand": false, "children": [
-                {"name": "基础", "folder": true, "expand": false, "children": [
-                    {"name": "基础命令安装与配置", "folder": false, "expand": false, "markdown": "基础命令安装与配置.md"},
-                    {"name": "防火墙", "folder": false, "expand": false, "markdown": "防火墙.md"}
-                ]},
-                {"name": "网络", "folder": true, "expand": false, "children": []},
-                {"name": "容器化", "folder": true, "expand": false, "children": []},
-                {"name": "数据库", "folder": true, "expand": false, "children": [
-                    {"name": "MySQL", "folder": false, "expand": false, "markdown": "MySQL.md"},
-                    {"name": "todo", "folder": false, "expand": false, "markdown": "todo.md"},
-                    {"name": "todo", "folder": false, "expand": false, "markdown": "todo.md"},
-                    {"name": "todo", "folder": false, "expand": false, "markdown": "todo.md"}
-                ]}
-            ]},
-            {"name": "测试", "folder": true, "expand": false, "children": [
-                {"name": "自动化测试", "folder": true, "expand": false, "children": []},
-                {"name": "渗透测试", "folder": true, "expand": false, "children": []}
-            ]}
-        ]
-    }
+    {"id": "1", "name": "开发", "folder": true, "expand": false},
+    {"id": "1_1", "name": "JAVA", "parentId": "1", "folder": true, "expand": false},
+    {"id": "1_2", "name": "Python", "parentId": "1", "folder": true, "expand": false},
+    {"id": "1_3", "name": "NodeJS", "parentId": "1", "folder": true, "expand": false},
+
+    {"id": "2", "name": "运维", "folder": true, "expand": false},
+    {"id": "2_1", "name": "基础", "parentId": "2", "folder": true, "expand": false},
+    {"id": "2_1_1", "name": "基础命令安装与配置", "parentId": "2_1", "folder": false, "expand": false, "markdown": "基础命令安装与配置.md"},
+    {"id": "2_1_2", "name": "防火墙", "parentId": "2_1", "folder": false, "expand": false, "markdown": "防火墙.md"},
+    {"id": "2_2", "name": "网络", "parentId": "2", "folder": true, "expand": false},
+    {"id": "2_3", "name": "容器化", "parentId": "2", "folder": true, "expand": false},
+    {"id": "2_4", "name": "数据库", "parentId": "2", "folder": true, "expand": false},
+    {"id": "2_4_1", "name": "MySQL", "parentId": "2_4", "folder": false, "expand": false, "markdown": "MySQL.md"},
+
+    {"id": "3", "name": "测试", "folder": true, "expand": false},
+    {"id": "3_1", "name": "自动化测试", "parentId": "3", "folder": true, "expand": false},
+    {"id": "3_2", "name": "渗透测试", "parentId": "3", "folder": true, "expand": false}
 ]

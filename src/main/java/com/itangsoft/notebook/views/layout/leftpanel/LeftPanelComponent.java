@@ -63,14 +63,38 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
 
     public void buildMenuTree(Tree<String> menuTree, String menuData) {
         JSONArray jMenuArray = JSONParser.parseStrict(menuData).isArray();
+
+        // 将菜单数据转成 parentId 和 subMenuList 的键值对
+        JSONObject jMapping = new JSONObject();
         for (int i = 0; i < jMenuArray.size(); i++) {
             JSONObject jMenu = jMenuArray.get(i).isObject();
-            TreeItem<String> treeItem = buildMenuItem(jMenu);
-            menuTree.appendChild(treeItem);
+            // 一级菜单不需要转换，因为其parentId为空
+            if ("null".equals(String.valueOf(jMenu.get("parentId")))) {
+                continue;
+            }
+            if ("null".equals(String.valueOf(jMapping.get(jMenu.get("parentId").isString().stringValue())))) {
+                JSONArray jTempArray = new JSONArray();
+                jTempArray.set(0, jMenu);
+                jMapping.put(jMenu.get("parentId").isString().stringValue(), jTempArray);
+            } else {
+                JSONArray jTempArray = jMapping.get(jMenu.get("parentId").isString().stringValue()).isArray();
+                jTempArray.set(jTempArray.size(), jMenu);
+                jMapping.put(jMenu.get("parentId").isString().stringValue(), jTempArray);
+            }
+        }
+
+        // 递归所有菜单，封装树结构
+        for (int i = 0; i < jMenuArray.size(); i++) {
+            JSONObject jMenu = jMenuArray.get(i).isObject();
+            // 只递归一级菜单
+            if ("null".equals(String.valueOf(jMenu.get("parentId")))) {
+                TreeItem<String> treeItem = buildMenuItem(jMenu, jMapping);
+                menuTree.appendChild(treeItem);
+            }
         }
     }
 
-    public TreeItem<String> buildMenuItem(JSONObject jMenu) {
+    public TreeItem<String> buildMenuItem(JSONObject jMenu, JSONObject jMapping) {
         TreeItem<String> treeItem;
 
         // 判断是目录还是文件
@@ -86,11 +110,12 @@ public class LeftPanelComponent extends AbstractComponent<ILeftPanelComponent.Co
         }
 
         // 判断是否存在子菜单
-        if (!"null".equals(String.valueOf(jMenu.get("children"))) && jMenu.get("children").isArray().size() > 0) {
-            JSONArray jSubMenuArray = jMenu.get("children").isArray();
+        String currMenuId = jMenu.get("id").isString().stringValue();
+        if (!"null".equals(String.valueOf(jMapping.get(currMenuId))) && jMapping.get(currMenuId).isArray().size() > 0) {
+            JSONArray jSubMenuArray = jMapping.get(currMenuId).isArray();
             for (int j = 0; j < jSubMenuArray.size(); j++) {
                 JSONObject jSubMenu = jSubMenuArray.get(j).isObject();
-                TreeItem<String> subTreeItem = buildMenuItem(jSubMenu);
+                TreeItem<String> subTreeItem = buildMenuItem(jSubMenu, jMapping);
                 treeItem.appendChild(subTreeItem);
             }
         }
