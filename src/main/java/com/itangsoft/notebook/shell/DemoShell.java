@@ -3,24 +3,29 @@ package com.itangsoft.notebook.shell;
 import com.github.nalukit.nalu.client.component.AbstractShell;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
 import com.itangsoft.notebook.AppContext;
-import org.dominokit.domino.ui.layout.Layout;
+import com.itangsoft.notebook.Routes;
+import com.itangsoft.notebook.Slots;
+import elemental2.dom.DomGlobal;
+import elemental2.dom.HTMLDivElement;
+import org.dominokit.domino.ui.utils.DominoElement;
 
 /**
  * Demo Shell
  *
  * @author fushuwei
  */
-@Shell("demo")
+@Shell(Routes.SHELL_DEMO)
 public class DemoShell extends AbstractShell<AppContext> {
 
-    Layout layout = Layout.create("Demo 管理系统").show();
+    DominoElement<HTMLDivElement> root = DominoElement.div().setId(Slots.SELECTOR_LAYOUT_CONTENT);
 
     @Override
     public void attachShell() {
+        DomGlobal.document.body.appendChild(root.element());
     }
 
     @Override
     public void detachShell() {
-        layout.remove();
+        root.remove();
     }
 }
