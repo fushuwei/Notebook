@@ -27,8 +27,8 @@ public class Routes {
     public static final String ROUTE_CONTENT = "/" + Routes.SHELL_LAYOUT + "/home/content/:fileName";
 
     /**
-     * Demo界面
+     * Showcase 界面
      */
-    public static final String SHELL_DEMO = "demo";
-    public static final String ROUTE_DEMO = "/" + Routes.SHELL_DEMO;
+    public static final String SHELL_SHOWCASE = "showcase";
+    public static final String ROUTE_EVENTBUS = "/" + Routes.SHELL_SHOWCASE + "/eventbus";
 }

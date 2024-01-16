@@ -1,0 +1,24 @@
+.showcase {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 3px solid grey;
+  background-color: #FAFAFA;
+}
+
+.showcase .eventbus {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid grey;
+  background-color: #FAFAFA;
+}
+
+.showcase .eventbus button {
+  margin: 0 10px 10px 0;
+}
+
+.showcase .eventbus textarea {
+  min-height: 500px;
+  border: 1px solid grey;
+}
