@@ -3,33 +3,54 @@ package com.itangsoft.notebook.views.showcase.eventbus2.event;
 import org.gwtproject.event.shared.Event;
 
 /**
- * Click Event
+ * MyEvent
  *
  * @author fushuwei
  */
-public class ClickEvent extends Event<ClickEvent.ClickEventHandler> {
+public class MyEvent extends Event<MyEvent.MyEventHandler> {
 
-    public static final Type<ClickEventHandler> TYPE = new Type<>();
+    public static final Type<MyEventHandler> TYPE = new Type<>();
 
-    private ClickEvent() {
+    private String name;
+    private String message;
+
+    private MyEvent() {
         super();
     }
 
-    public static ClickEvent create() {
-        return new ClickEvent();
+    private MyEvent(String name, String message) {
+        super();
+        this.name = name;
+        this.message = message;
+    }
+
+    public static MyEvent create() {
+        return new MyEvent();
+    }
+
+    public static MyEvent create(String name, String message) {
+        return new MyEvent(name, message);
     }
 
     @Override
-    public Type<ClickEventHandler> getAssociatedType() {
+    public Type<MyEventHandler> getAssociatedType() {
         return TYPE;
     }
 
     @Override
-    protected void dispatch(ClickEventHandler handler) {
+    protected void dispatch(MyEventHandler handler) {
         handler.onClick(this);
     }
 
-    public interface ClickEventHandler {
-        void onClick(ClickEvent clickEvent);
+    public interface MyEventHandler {
+        void onClick(MyEvent event);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

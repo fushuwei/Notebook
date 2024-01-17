@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.showcase.eventbus;
+package com.itangsoft.notebook.views.showcase.eventbus2;
 
 import com.github.nalukit.nalu.client.component.IsComponent;
 import elemental2.dom.HTMLElement;
