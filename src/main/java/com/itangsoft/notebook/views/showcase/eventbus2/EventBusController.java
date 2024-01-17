@@ -21,7 +21,13 @@ public class EventBusController
 
     int counter = 1;
 
+    NaluApplicationEvent myEvent;
+
     public EventBusController() {
+        // 创建事件
+        myEvent = NaluApplicationEvent.create().event("MyEvent")
+            .using("name", "MyEvent")
+            .usingObject("message", "你能看到这条信息是因为你触发了该事件");
     }
 
     /**
@@ -37,12 +43,12 @@ public class EventBusController
                     String message = "Hi，我是自定义事件：" + e.getDataStore().get("name") + "，" +
                         e.getDataObjectStore().get("message") + " " + counter + " 次";
 
-                    String currentValue = this.component.getTextArea1().getValue();
+                    String currentValue = this.component.getTextArea().getValue();
                     if (currentValue != null && !currentValue.isEmpty()) {
                         message = currentValue + "\r\n" + message;
                     }
 
-                    this.component.getTextArea1().setValue(message);
+                    this.component.getTextArea().setValue(message);
 
                     counter++;
                 }
@@ -50,39 +56,14 @@ public class EventBusController
     }
 
     @Override
-    public void fireEvent1() {
-        // 创建事件
-        NaluApplicationEvent myEvent = NaluApplicationEvent.create().event("MyEvent")
-            .using("name", "MyEvent")
-            .usingObject("message", "你能看到这条信息是因为你触发了该事件");
-
+    public void fireEvent() {
         // 触发事件
         this.eventBus.fireEvent(myEvent);
     }
 
     @Override
-    public void clear1() {
+    public void clear() {
         counter = 1;
-        this.component.getTextArea1().setValue("");
-    }
-
-    @Override
-    public void fireEvent2() {
-
-    }
-
-    @Override
-    public void clear2() {
-
-    }
-
-    @Override
-    public void fireEvent3() {
-
-    }
-
-    @Override
-    public void clear3() {
-
+        this.component.getTextArea().setValue("");
     }
 }

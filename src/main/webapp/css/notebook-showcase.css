@@ -14,11 +14,26 @@
   background-color: #FAFAFA;
 }
 
+.showcase .eventbus h1, h2, h3 {
+  text-align: center;
+}
+
+.showcase .eventbus h2 {
+  margin-bottom: 25px;
+}
+
+.showcase .eventbus > div > div {
+  flex: auto;
+  margin: 1em;
+  padding: 0.5em;
+  border: 1px solid grey;
+}
+
 .showcase .eventbus button {
   margin: 0 10px 10px 0;
 }
 
 .showcase .eventbus textarea {
-  min-height: 500px;
+  min-height: 450px;
   border: 1px solid grey;
 }

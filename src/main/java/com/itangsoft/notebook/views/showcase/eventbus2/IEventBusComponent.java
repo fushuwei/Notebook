@@ -2,6 +2,7 @@ package com.itangsoft.notebook.views.showcase.eventbus;
 
 import com.github.nalukit.nalu.client.component.IsComponent;
 import elemental2.dom.HTMLElement;
+import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 
 /**
@@ -12,22 +13,12 @@ import org.dominokit.domino.ui.forms.TextArea;
 public interface IEventBusComponent extends IsComponent<IEventBusComponent.Controller, HTMLElement> {
 
     interface Controller extends IsComponent.Controller {
-        void fireEvent1();
+        void fireEvent();
 
-        void clear1();
-
-        void fireEvent2();
-
-        void clear2();
-
-        void fireEvent3();
-
-        void clear3();
+        void clear();
     }
 
-    TextArea getTextArea1();
+    Button getEventBtn();
 
-    TextArea getTextArea2();
-
-    TextArea getTextArea3();
+    TextArea getTextArea();
 }

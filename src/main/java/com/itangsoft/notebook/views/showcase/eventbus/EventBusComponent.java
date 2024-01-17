@@ -6,6 +6,7 @@ import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.button.Button;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.dominokit.domino.ui.utils.DominoElement;
+import org.jboss.elemento.Elements;
 
 /**
  * EventBus Component
@@ -16,9 +17,17 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
 
     DominoElement<HTMLDivElement> root = DominoElement.div().css("eventbus");
 
-    Button eventBtn = Button.create("测试事件总线");
-    Button clearBtn = Button.create("清空日志");
-    TextArea textArea = TextArea.create().setReadOnly(true);
+    Button clickBtn1 = Button.create("点击事件");
+    Button clearBtn1 = Button.create("清空日志");
+    TextArea textArea1 = TextArea.create().setReadOnly(true);
+
+    Button clickBtn2 = Button.create("点击事件");
+    Button clearBtn2 = Button.create("清空日志");
+    TextArea textArea2 = TextArea.create().setReadOnly(true);
+
+    Button clickBtn3 = Button.create("点击事件");
+    Button clearBtn3 = Button.create("清空日志");
+    TextArea textArea3 = TextArea.create().setReadOnly(true);
 
     public EventBusComponent() {
         super();
@@ -26,20 +35,46 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
 
     @Override
     public void render() {
-        eventBtn.addClickListener(evt -> this.getController().fireEvent());
+        clickBtn1.addClickListener(evt -> this.getController().fireEvent1());
+        clearBtn1.addClickListener(evt -> this.getController().clear1());
 
-        clearBtn.addClickListener(evt -> this.getController().clear());
+        clickBtn2.addClickListener(evt -> this.getController().fireEvent2());
+        clearBtn2.addClickListener(evt -> this.getController().clear2());
 
-        initElement(root.appendChild(eventBtn).appendChild(clearBtn).appendChild(textArea).element());
+        clickBtn3.addClickListener(evt -> this.getController().fireEvent3());
+        clearBtn3.addClickListener(evt -> this.getController().clear3());
+
+        root.appendChild(Elements.h(1, "事件总线"))
+            .appendChild(DominoElement.div()
+                .appendChild(DominoElement.div()
+                    .appendChild(Elements.h(2, "初级用法"))
+                    .appendChild(clickBtn1)
+                    .appendChild(clearBtn1)
+                    .appendChild(textArea1))
+                .appendChild(DominoElement.div()
+                    .appendChild(Elements.h(2, "中级用法"))
+                    .appendChild(clickBtn2)
+                    .appendChild(clearBtn2)
+                    .appendChild(textArea2))
+                .appendChild(DominoElement.div()
+                    .appendChild(Elements.h(2, "高级用法"))
+                    .appendChild(clickBtn3)
+                    .appendChild(clearBtn3)
+                    .appendChild(textArea3))
+                .setDisplay("flex"));
+
+        initElement(root.element());
     }
 
-    @Override
-    public Button getEventBtn() {
-        return eventBtn;
+    public TextArea getTextArea1() {
+        return textArea1;
     }
 
-    @Override
-    public TextArea getTextArea() {
-        return textArea;
+    public TextArea getTextArea2() {
+        return textArea2;
+    }
+
+    public TextArea getTextArea3() {
+        return textArea3;
     }
 }
