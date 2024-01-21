@@ -2,6 +2,7 @@ package com.itangsoft.notebook;
 
 import com.github.nalukit.nalu.client.context.AbstractModuleContext;
 import com.google.gwt.storage.client.Storage;
+import org.dominokit.domino.ui.forms.TextArea;
 import org.gwtproject.i18n.client.DateTimeFormat;
 
 import java.util.Objects;
@@ -50,6 +51,14 @@ public class AppContext extends AbstractModuleContext {
     public void setRealName(String realName) {
         super.getApplicationContext().put("realName", realName);
         Storage.getSessionStorageIfSupported().setItem("realName", realName);
+    }
+
+    public TextArea getTextArea() {
+        return (TextArea) super.getApplicationContext().get("textArea");
+    }
+
+    public void setTextArea(TextArea textArea) {
+        super.getApplicationContext().put("textArea", textArea);
     }
 
     public String getApplicationBuildTimeStr() {

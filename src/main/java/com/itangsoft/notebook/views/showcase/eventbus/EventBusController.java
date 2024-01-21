@@ -48,6 +48,8 @@ public class EventBusController
                     counter1++;
                 }
             });
+
+        this.context.setTextArea(this.component.getTextArea2());
     }
 
     @Override
