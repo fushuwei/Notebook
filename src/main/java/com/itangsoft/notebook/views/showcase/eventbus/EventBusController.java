@@ -5,6 +5,7 @@ import com.github.nalukit.nalu.client.event.NaluApplicationEvent;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.base.BaseComponentController;
+import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
 
 /**
  * EventBus Controller
@@ -35,7 +36,7 @@ public class EventBusController
             e -> {
                 if ("MyEvent1".equals(e.getEvent())) {
                     String message = "我是" + e.getDataStore().get("name") + "，" +
-                        e.getDataObjectStore().get("message") + "，这是你第 " + counter1 + " 次触发事件";
+                        e.getDataObjectStore().get("message") + "，第 " + counter1 + " 次触发";
 
                     String currentValue = this.component.getTextArea1().getValue();
                     if (currentValue != null && !currentValue.isEmpty()) {
@@ -68,7 +69,11 @@ public class EventBusController
 
     @Override
     public void fireEvent2() {
+        // 创建事件
+        CustomizeEvent event = CustomizeEvent.create("MyEvent2", "你能看到这条信息是因为你触发了该事件");
 
+        // 触发事件
+        this.eventBus.fireEvent(event);
     }
 
     @Override

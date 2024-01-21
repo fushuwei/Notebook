@@ -47,7 +47,7 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
         root.appendChild(Elements.h(1, "事件总线"))
             .appendChild(DominoElement.div()
                 .appendChild(DominoElement.div()
-                    .appendChild(Elements.h(2, "使用 Nalu 框架默认事件"))
+                    .appendChild(Elements.h(2, "使用 Nalu 框架内置事件"))
                     .appendChild(clickBtn1)
                     .appendChild(clearBtn1)
                     .appendChild(textArea1))
