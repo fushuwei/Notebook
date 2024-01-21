@@ -17,16 +17,16 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
 
     DominoElement<HTMLDivElement> root = DominoElement.div().css("eventbus");
 
-    Button clickBtn1 = Button.create("点击事件");
-    Button clearBtn1 = Button.create("清空日志");
+    Button clickBtn1 = Button.create("触发事件按钮");
+    Button clearBtn1 = Button.create("清空");
     TextArea textArea1 = TextArea.create().setReadOnly(true);
 
-    Button clickBtn2 = Button.create("点击事件");
-    Button clearBtn2 = Button.create("清空日志");
+    Button clickBtn2 = Button.create("触发事件按钮");
+    Button clearBtn2 = Button.create("清空");
     TextArea textArea2 = TextArea.create().setReadOnly(true);
 
-    Button clickBtn3 = Button.create("点击事件");
-    Button clearBtn3 = Button.create("清空日志");
+    Button clickBtn3 = Button.create("触发事件按钮");
+    Button clearBtn3 = Button.create("清空");
     TextArea textArea3 = TextArea.create().setReadOnly(true);
 
     public EventBusComponent() {
@@ -47,17 +47,17 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
         root.appendChild(Elements.h(1, "事件总线"))
             .appendChild(DominoElement.div()
                 .appendChild(DominoElement.div()
-                    .appendChild(Elements.h(2, "初级用法"))
+                    .appendChild(Elements.h(2, "使用 Nalu 框架默认事件"))
                     .appendChild(clickBtn1)
                     .appendChild(clearBtn1)
                     .appendChild(textArea1))
                 .appendChild(DominoElement.div()
-                    .appendChild(Elements.h(2, "中级用法"))
+                    .appendChild(Elements.h(2, "自定义 Event 和 Handler 类"))
                     .appendChild(clickBtn2)
                     .appendChild(clearBtn2)
                     .appendChild(textArea2))
                 .appendChild(DominoElement.div()
-                    .appendChild(Elements.h(2, "高级用法"))
+                    .appendChild(Elements.h(2, "使用 @EventHandler 注解"))
                     .appendChild(clickBtn3)
                     .appendChild(clearBtn3)
                     .appendChild(textArea3))

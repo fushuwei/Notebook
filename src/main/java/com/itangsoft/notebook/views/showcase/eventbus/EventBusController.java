@@ -19,7 +19,7 @@ public class EventBusController
     extends BaseComponentController<IEventBusComponent>
     implements IEventBusComponent.Controller {
 
-    int counter = 1;
+    int counter1 = 1, counter2 = 1, counter3 = 1;
 
     public EventBusController() {
     }
@@ -33,9 +33,9 @@ public class EventBusController
     public void start() {
         this.eventBus.addHandler(NaluApplicationEvent.TYPE,
             e -> {
-                if ("MyEvent".equals(e.getEvent())) {
-                    String message = "Hi，我是自定义事件：" + e.getDataStore().get("name") + "，" +
-                        e.getDataObjectStore().get("message") + " " + counter + " 次";
+                if ("MyEvent1".equals(e.getEvent())) {
+                    String message = "我是" + e.getDataStore().get("name") + "，" +
+                        e.getDataObjectStore().get("message") + "，这是你第 " + counter1 + " 次触发事件";
 
                     String currentValue = this.component.getTextArea1().getValue();
                     if (currentValue != null && !currentValue.isEmpty()) {
@@ -44,7 +44,7 @@ public class EventBusController
 
                     this.component.getTextArea1().setValue(message);
 
-                    counter++;
+                    counter1++;
                 }
             });
     }
@@ -52,17 +52,17 @@ public class EventBusController
     @Override
     public void fireEvent1() {
         // 创建事件
-        NaluApplicationEvent myEvent = NaluApplicationEvent.create().event("MyEvent")
-            .using("name", "MyEvent")
-            .usingObject("message", "你能看到这条信息是因为你触发了该事件");
+        NaluApplicationEvent event = NaluApplicationEvent.create().event("MyEvent1")
+            .using("name", "MyEvent1")
+            .usingObject("message", "基于 NaluApplicationEvent 创建");
 
         // 触发事件
-        this.eventBus.fireEvent(myEvent);
+        this.eventBus.fireEvent(event);
     }
 
     @Override
     public void clear1() {
-        counter = 1;
+        counter1 = 1;
         this.component.getTextArea1().setValue("");
     }
 
@@ -73,7 +73,8 @@ public class EventBusController
 
     @Override
     public void clear2() {
-
+        counter2 = 1;
+        this.component.getTextArea2().setValue("");
     }
 
     @Override
@@ -83,6 +84,7 @@ public class EventBusController
 
     @Override
     public void clear3() {
-
+        counter3 = 1;
+        this.component.getTextArea3().setValue("");
     }
 }
