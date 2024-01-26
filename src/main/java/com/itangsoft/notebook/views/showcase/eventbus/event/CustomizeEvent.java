@@ -3,7 +3,7 @@ package com.itangsoft.notebook.views.showcase.eventbus.event;
 import org.gwtproject.event.shared.Event;
 
 /**
- * 自定义事件类
+ * 事件类
  *
  * @author fushuwei
  */

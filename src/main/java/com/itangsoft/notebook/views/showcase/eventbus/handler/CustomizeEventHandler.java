@@ -6,9 +6,9 @@ import com.itangsoft.notebook.AppContext;
 import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
 
 /**
- * 自定义事件处理程序类
+ * 事件处理程序类
  * <p>
- * 该类用于处理 {@link com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent} 事件
+ * 该类用于注册 {@link com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent} 事件的处理程序
  *
  * @author fushuwei
  */
@@ -20,6 +20,7 @@ public class CustomizeEventHandler extends AbstractHandler<AppContext> {
 
     @Override
     public void bind() {
+        // 注册事件的处理程序
         this.eventBus.addHandler(CustomizeEvent.TYPE, e -> {
             String message = "Hi，我是自定义事件：" + e.getName() + "，" + e.getMessage();
 
