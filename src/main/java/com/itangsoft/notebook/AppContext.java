@@ -53,12 +53,20 @@ public class AppContext extends AbstractModuleContext {
         Storage.getSessionStorageIfSupported().setItem("realName", realName);
     }
 
-    public TextArea getTextArea() {
-        return (TextArea) super.getApplicationContext().get("textArea");
+    public TextArea getTextArea2() {
+        return (TextArea) super.getApplicationContext().get("textArea2");
     }
 
-    public void setTextArea(TextArea textArea) {
-        super.getApplicationContext().put("textArea", textArea);
+    public void setTextArea2(TextArea textArea) {
+        super.getApplicationContext().put("textArea2", textArea);
+    }
+
+    public int getCounter2() {
+        return (int) super.getApplicationContext().get("counter2");
+    }
+
+    public void setCounter2(int counter) {
+        super.getApplicationContext().put("counter2", counter);
     }
 
     public String getApplicationBuildTimeStr() {

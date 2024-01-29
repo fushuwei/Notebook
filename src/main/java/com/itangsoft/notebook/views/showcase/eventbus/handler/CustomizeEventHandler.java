@@ -22,14 +22,16 @@ public class CustomizeEventHandler extends AbstractHandler<AppContext> {
     public void bind() {
         // 注册事件的处理程序
         this.eventBus.addHandler(CustomizeEvent.TYPE, e -> {
-            String message = "Hi，我是自定义事件：" + e.getName() + "，" + e.getMessage();
+            String message = "我是" + e.getName() + "，" + e.getMessage() + "，第 " + this.context.getCounter2() + " 次触发";
 
-            String currentValue = this.context.getTextArea().getValue();
+            String currentValue = this.context.getTextArea2().getValue();
             if (currentValue != null && !currentValue.isEmpty()) {
                 message = currentValue + "\r\n" + message;
             }
 
-            this.context.getTextArea().setValue(message);
+            this.context.getTextArea2().setValue(message);
+
+            this.context.setCounter2(this.context.getCounter2() + 1);
         });
     }
 }

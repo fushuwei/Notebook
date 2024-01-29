@@ -2,9 +2,11 @@ package com.itangsoft.notebook.views.showcase.eventbus;
 
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.github.nalukit.nalu.client.event.NaluApplicationEvent;
+import com.github.nalukit.nalu.client.event.annotation.EventHandler;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.base.BaseComponentController;
+import com.itangsoft.notebook.views.showcase.eventbus.event.AnnotationEvent;
 import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
 
 /**
@@ -49,7 +51,8 @@ public class EventBusController
                 }
             });
 
-        this.context.setTextArea(this.component.getTextArea2());
+        this.context.setTextArea2(this.component.getTextArea2());
+        this.context.setCounter2(counter2);
     }
 
     @Override
@@ -80,13 +83,32 @@ public class EventBusController
 
     @Override
     public void clear2() {
-        counter2 = 1;
+        // counter2 = 1;
+        this.context.setCounter2(1);
         this.component.getTextArea2().setValue("");
+    }
+
+    @EventHandler
+    public void registerEvent(AnnotationEvent event) {
+        String message = "我是" + event.getName() + "，" + event.getMessage() + "，第 " + counter3 + " 次触发";
+
+        String currentValue = this.component.getTextArea3().getValue();
+        if (currentValue != null && !currentValue.isEmpty()) {
+            message = currentValue + "\r\n" + message;
+        }
+
+        this.component.getTextArea3().setValue(message);
+
+        counter3++;
     }
 
     @Override
     public void fireEvent3() {
+        // 创建事件
+        AnnotationEvent event = AnnotationEvent.create("MyEvent3", "你能看到这条信息是因为你触发了该事件");
 
+        // 触发事件
+        this.eventBus.fireEvent(event);
     }
 
     @Override

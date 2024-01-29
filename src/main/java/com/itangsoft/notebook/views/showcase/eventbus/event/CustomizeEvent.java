@@ -3,7 +3,7 @@ package com.itangsoft.notebook.views.showcase.eventbus.event;
 import org.gwtproject.event.shared.Event;
 
 /**
- * 事件类
+ * 事件类, 用于模拟自定义 Event 和 Handler 类的示例
  *
  * @author fushuwei
  */
