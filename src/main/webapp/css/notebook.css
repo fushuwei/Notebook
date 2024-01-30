@@ -365,6 +365,28 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 }
 
 .layout-header .layout-header-toolbar {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.layout-header .layout-header-toolbar li {
+  float: left;
+  margin-right: 10px;
+  padding: 0;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  list-style-type: none;
+}
+
+.layout-header .layout-header-toolbar li a {
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: white;
 }
 
 .layout-header .layout-header-avatar {

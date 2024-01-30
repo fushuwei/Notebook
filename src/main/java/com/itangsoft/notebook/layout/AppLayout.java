@@ -3,6 +3,7 @@ package com.itangsoft.notebook.layout;
 import elemental2.dom.DomGlobal;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLImageElement;
+import elemental2.dom.HTMLUListElement;
 import org.dominokit.domino.ui.style.ColorScheme;
 import org.dominokit.domino.ui.style.Style;
 import org.dominokit.domino.ui.themes.Theme;
@@ -139,6 +140,10 @@ public class AppLayout extends BaseDominoElement<HTMLDivElement, AppLayout> {
      */
     public void setAvatar(String word) {
         header.getAvatar().clearElement().appendChild(DominoElement.div().setAttribute("alt", word));
+    }
+
+    public DominoElement<HTMLUListElement> getToolbar() {
+        return header.getToolbar();
     }
 
     /**

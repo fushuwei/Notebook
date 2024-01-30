@@ -34,7 +34,7 @@ public class Header extends BaseDominoElement<HTMLElement, Header> {
                     .setFlex("1")
                     .setDisplay("flex")
                     .setAlignItems("center"))
-                .appendChild(FlexItem.create().appendChild(toolbar))
+                .appendChild(FlexItem.create().appendChild(toolbar).setMarginRight("30px"))
                 .appendChild(FlexItem.create().appendChild(avatar))
                 .css("layout-header-container"));
     }
