@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-    <!-- GWT stuffs -->
+    <!-- Inherit the core Google Web Toolkit stuffs -->
+    <inherits name="com.google.gwt.core.Core"/>
     <inherits name="com.google.gwt.user.User"/>
-    <inherits name="com.google.gwt.json.JSON" />
+    <inherits name="com.google.gwt.i18n.I18N"/>
+    <inherits name="com.google.gwt.json.JSON"/>
     <inherits name="com.google.gwt.precompress.Precompress"/>
 
     <!-- Nalu stuffs -->
@@ -10,11 +12,9 @@
     <inherits name="com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2"/>
 
     <!-- Domino stuffs -->
-    <inherits name="org.dominokit.rest.Rest"/>
     <inherits name="org.dominokit.domino.ui.DominoUI"/>
-
-    <!-- Apache Commons stuffs -->
-    <!-- <inherits name="org.apache.commons.GWTCommonsLang3"/> -->
+    <inherits name="org.dominokit.jackson.Jackson"/>
+    <inherits name="org.dominokit.rest.Rest"/>
 
     <!-- Specify the app entry point class -->
     <entry-point class="com.itangsoft.notebook.AppEntryPoint"/>

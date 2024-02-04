@@ -18,9 +18,9 @@
 
         <gwt.version>2.10.0</gwt.version>
         <nalu.version>2.12.6</nalu.version>
-        <domino-rest.version>1.0.1</domino-rest.version>
-        <domino-jackson.version>1.0.3</domino-jackson.version>
         <domino-ui.version>1.0.0-RC19</domino-ui.version>
+        <domino-jackson.version>1.0.4</domino-jackson.version>
+        <domino-rest.version>1.0.2</domino-rest.version>
         <elemental2.version>1.2.1</elemental2.version>
         <akasha.version>0.31</akasha.version>
         <slf4j-api.version>2.0.9</slf4j-api.version>
@@ -60,18 +60,19 @@
                 <version>${nalu.version}</version>
             </dependency>
 
-            <!-- Domino Rest -->
+            <!-- Domino UI -->
             <dependency>
                 <groupId>org.dominokit</groupId>
-                <artifactId>domino-rest-client</artifactId>
-                <version>${domino-rest.version}</version>
+                <artifactId>domino-ui</artifactId>
+                <version>${domino-ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dominokit</groupId>
-                <artifactId>domino-rest-processor</artifactId>
-                <version>${domino-rest.version}</version>
-                <scope>provided</scope>
+                <artifactId>domino-ui</artifactId>
+                <version>${domino-ui.version}</version>
+                <classifier>sources</classifier>
             </dependency>
+
             <!-- Domino Jackson -->
             <dependency>
                 <groupId>org.dominokit</groupId>
@@ -84,17 +85,17 @@
                 <version>${domino-jackson.version}</version>
             </dependency>
 
-            <!-- Domino UI -->
+            <!-- Domino Rest -->
             <dependency>
                 <groupId>org.dominokit</groupId>
-                <artifactId>domino-ui</artifactId>
-                <version>${domino-ui.version}</version>
+                <artifactId>domino-rest-client</artifactId>
+                <version>${domino-rest.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dominokit</groupId>
-                <artifactId>domino-ui</artifactId>
-                <version>${domino-ui.version}</version>
-                <classifier>sources</classifier>
+                <artifactId>domino-rest-processor</artifactId>
+                <version>${domino-rest.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <!-- Elemental2 Indexed DB -->
@@ -144,17 +145,6 @@
             <artifactId>nalu-plugin-elemental2</artifactId>
         </dependency>
 
-        <!-- Domino Rest -->
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-rest-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.dominokit</groupId>
-            <artifactId>domino-rest-processor</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Domino UI -->
         <dependency>
             <groupId>org.dominokit</groupId>
@@ -164,6 +154,28 @@
             <groupId>org.dominokit</groupId>
             <artifactId>domino-ui</artifactId>
             <classifier>sources</classifier>
+        </dependency>
+
+        <!-- Domino Jackson -->
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-jackson-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Domino Rest -->
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-rest-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dominokit</groupId>
+            <artifactId>domino-rest-processor</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- slf4j -->
