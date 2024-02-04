@@ -1,9 +1,9 @@
-package com.itangsoft.notebook.bean;
+package com.itangsoft.notebook.model;
 
 import org.dominokit.jackson.annotation.JSONMapper;
 
 /**
- * 菜单类
+ * 菜单实体类
  *
  * @author fushuwei
  */
