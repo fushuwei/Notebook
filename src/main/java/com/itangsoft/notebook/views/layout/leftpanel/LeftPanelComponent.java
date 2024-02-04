@@ -1,13 +1,8 @@
 package com.itangsoft.notebook.views.layout.leftpanel;
 
 import com.github.nalukit.nalu.client.component.AbstractComponent;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.Response;
 import com.itangsoft.notebook.model.Menu;
-import com.itangsoft.notebook.model.Menu_MapperImpl;
-import com.itangsoft.notebook.utils.HttpClient;
+import com.itangsoft.notebook.service.MenuServiceFactory;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.icons.Icons;
 import org.dominokit.domino.ui.tree.Tree;
@@ -17,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,32 +38,23 @@ public class LeftPanelComponent
             .enableSearch()
             .enableFolding();
 
-        HttpClient.get(GWT.getHostPageBaseURL() + "data/menu.json", null, new RequestCallback() {
-            @Override
-            public void onResponseReceived(Request request, Response response) {
-                if (response.getStatusCode() != Response.SC_OK) {
-                    logger.error("Error: " + response.getStatusCode() + " -> " + response.getStatusText());
-                    return;
-                }
-
+        MenuServiceFactory.INSTANCE.queryMenus()
+            .onSuccess(response -> {
                 try {
-                    Menu[] menus = Menu_MapperImpl.INSTANCE.readArray(response.getText(), Menu[]::new);
-                    buildMenuTree(menuTree, menus);
+                    buildMenuTree(menuTree, response);
                 } catch (Exception e) {
                     logger.error("菜单渲染失败", e);
                 }
-            }
-
-            @Override
-            public void onError(Request request, Throwable throwable) {
-                logger.error("Error: ", throwable);
-            }
-        });
+            })
+            .onFailed(failedResponse -> {
+                logger.error("Error: ", failedResponse.getThrowable());
+            })
+            .send();
 
         initElement(DominoElement.div().appendChild(menuTree).element());
     }
 
-    public void buildMenuTree(Tree<String> menuTree, Menu[] menus) {
+    public void buildMenuTree(Tree<String> menuTree, List<Menu> menus) {
         // 将菜单数据转成 parentId 和 subMenuList 的键值对
         Map<String, List<Menu>> mapping = new HashMap<>();
         for (Menu menu : menus) {
@@ -86,7 +71,7 @@ public class LeftPanelComponent
         }
 
         // 循环第一级菜单，然后递归子菜单
-        Arrays.stream(menus).forEach(menu -> {
+        menus.forEach(menu -> {
             if (menu.getParentId() == null || "".equals(menu.getParentId())) {
                 TreeItem<String> treeItem = buildMenuItem(menu, mapping);
                 menuTree.appendChild(treeItem);
