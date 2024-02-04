@@ -29,7 +29,8 @@ public class AppEntryPoint implements EntryPoint {
 
         // Initialize domino rest
         DominoRestConfig.initDefaults()
-            .setDefaultServiceRoot("http://localhost:8000")
+            .setDefaultServiceRoot(GWT.getHostPageBaseURL())
+            .setDefaultResourceRootPath("")
             .setDefaultFailHandler(failedResponseBean ->
                 DomGlobal.window.alert("PANIC! -> Server failed to process request"));
 
