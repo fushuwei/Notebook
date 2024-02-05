@@ -12,6 +12,6 @@ public interface IContentComponent extends IsComponent<IContentComponent.Control
 
     interface Controller extends IsComponent.Controller {
 
-        public String getFileName();
+        String getFileName();
     }
 }

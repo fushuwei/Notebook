@@ -1,11 +1,7 @@
 package com.itangsoft.notebook.views.layout.content;
 
 import com.github.nalukit.nalu.client.component.AbstractComponent;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.Response;
-import com.itangsoft.notebook.utils.HttpClient;
+import com.itangsoft.notebook.service.FileServiceFactory;
 import elemental2.dom.HTMLDivElement;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.utils.DominoElement;
@@ -17,7 +13,9 @@ import org.slf4j.LoggerFactory;
  *
  * @author fushuwei
  */
-public class ContentComponent extends AbstractComponent<IContentComponent.Controller, HTMLElement> implements IContentComponent {
+public class ContentComponent
+    extends AbstractComponent<IContentComponent.Controller, HTMLElement>
+    implements IContentComponent {
 
     private static final Logger logger = LoggerFactory.getLogger(ContentComponent.class);
 
@@ -29,28 +27,21 @@ public class ContentComponent extends AbstractComponent<IContentComponent.Contro
     public void render() {
         DominoElement<HTMLDivElement> contentDiv = DominoElement.div().css("markdown-body");
 
-        String mdUrl = GWT.getHostPageBaseURL() + "files/" + getController().getFileName();
-        HttpClient.get(mdUrl, null, new RequestCallback() {
-            @Override
-            public void onResponseReceived(Request request, Response response) {
-                if (response.getStatusCode() != Response.SC_OK) {
-                    logger.error("Error: " + response.getStatusCode() + " -> " + response.getStatusText());
-                    return;
-                }
-
+        FileServiceFactory.INSTANCE.getFileContent(getController().getFileName())
+            .onSuccess(s -> {
                 try {
-                    String convertedHtml = markdown2Html(response.getText());
+                    logger.info(s);
+
+                    String convertedHtml = markdown2Html(s);
                     contentDiv.setInnerHtml(convertedHtml);
                 } catch (Exception e) {
                     logger.error("Markdown笔记渲染失败", e);
                 }
-            }
-
-            @Override
-            public void onError(Request request, Throwable throwable) {
-                logger.error("Error: ", throwable);
-            }
-        });
+            })
+            .onFailed(failedResponseBean -> {
+                logger.error("Error: ", failedResponseBean.getThrowable());
+            })
+            .send();
 
         initElement(DominoElement.div().appendChild(contentDiv).element());
     }
