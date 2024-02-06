@@ -5,6 +5,8 @@ import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.base.BaseComponentController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Content Controller
@@ -18,6 +20,8 @@ import com.itangsoft.notebook.base.BaseComponentController;
 public class ContentController
     extends BaseComponentController<IContentComponent>
     implements IContentComponent.Controller {
+
+    private static final Logger logger = LoggerFactory.getLogger(ContentController.class);
 
     String fileName;
 

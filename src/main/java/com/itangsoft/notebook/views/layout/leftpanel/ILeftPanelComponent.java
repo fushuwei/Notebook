@@ -11,7 +11,6 @@ import elemental2.dom.HTMLElement;
 public interface ILeftPanelComponent extends IsComponent<ILeftPanelComponent.Controller, HTMLElement> {
 
     interface Controller extends IsComponent.Controller {
-
         void openFile(String fileName);
     }
 }
