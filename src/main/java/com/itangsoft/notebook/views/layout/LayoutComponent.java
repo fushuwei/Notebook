@@ -1,6 +1,7 @@
 package com.itangsoft.notebook.views.layout;
 
 import com.github.nalukit.nalu.client.component.AbstractComponent;
+import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.layout.AppLayout;
 import elemental2.dom.HTMLElement;
@@ -37,7 +38,7 @@ public class LayoutComponent
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(DominoElement.of(Elements.a("#example/single-page-layout", "_blank")).textContent("单页布局")))
             .appendChild(DominoElement.of(Elements.li())
-                .appendChild(DominoElement.of(Elements.a("#example/eventbus", "_blank")).textContent("事件总线")))
+                .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_EVENTBUS, "_blank")).textContent("事件总线")))
             .appendChild(DominoElement.of(Elements.li()).textContent("常用工具包"));
 
         // 设置左侧面板

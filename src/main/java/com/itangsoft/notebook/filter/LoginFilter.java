@@ -19,8 +19,7 @@ public class LoginFilter extends AbstractFilter<AppContext> {
     public boolean filter(String route, String... params) {
         return "admin".equals(this.context.getUserName())
             || Routes.ROUTE_LOGIN.equals(route)
-            || Routes.ROUTE_EVENTBUS.equals(route)
-            ;
+            || route.startsWith("/example");
     }
 
     @Override

@@ -9,12 +9,12 @@ import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.utils.DominoElement;
 
 /**
- * Example Shell
+ * EventBus Shell
  *
  * @author fushuwei
  */
-@Shell(Routes.SHELL_EXAMPLE)
-public class ExampleShell extends AbstractShell<AppContext> {
+@Shell(Routes.SHELL_EXAMPLE_EVENTBUS)
+public class EventBusShell extends AbstractShell<AppContext> {
 
     DominoElement<HTMLDivElement> root = DominoElement.div()
         .setId(Slots.SELECTOR_EXAMPLE_PAGE)
