@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.showcase.eventbus.event;
+package com.itangsoft.notebook.example.views.eventbus.event;
 
 import org.gwtproject.event.shared.Event;
 

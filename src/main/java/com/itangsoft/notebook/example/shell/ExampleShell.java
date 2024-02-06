@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.shell;
+package com.itangsoft.notebook.example.shell;
 
 import com.github.nalukit.nalu.client.component.AbstractShell;
 import com.github.nalukit.nalu.client.component.annotation.Shell;
@@ -9,16 +9,16 @@ import elemental2.dom.HTMLDivElement;
 import org.dominokit.domino.ui.utils.DominoElement;
 
 /**
- * Showcase Shell
+ * Example Shell
  *
  * @author fushuwei
  */
-@Shell(Routes.SHELL_SHOWCASE)
-public class ShowcaseShell extends AbstractShell<AppContext> {
+@Shell(Routes.SHELL_EXAMPLE)
+public class ExampleShell extends AbstractShell<AppContext> {
 
     DominoElement<HTMLDivElement> root = DominoElement.div()
-        .setId(Slots.SELECTOR_LAYOUT_CONTENT)
-        .css("showcase");
+        .setId(Slots.SELECTOR_EXAMPLE_PAGE)
+        .css("example");
 
     @Override
     public void attachShell() {

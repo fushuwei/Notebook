@@ -1,14 +1,14 @@
-package com.itangsoft.notebook.views.showcase.eventbus.handler;
+package com.itangsoft.notebook.example.views.eventbus.handler;
 
 import com.github.nalukit.nalu.client.handler.AbstractHandler;
 import com.github.nalukit.nalu.client.handler.annotation.Handler;
 import com.itangsoft.notebook.AppContext;
-import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
+import com.itangsoft.notebook.example.views.eventbus.event.CustomizeEvent;
 
 /**
  * 事件处理程序类
  * <p>
- * 该类用于注册 {@link com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent} 事件的处理程序
+ * 该类用于注册 {@link CustomizeEvent} 事件的处理程序
  *
  * @author fushuwei
  */

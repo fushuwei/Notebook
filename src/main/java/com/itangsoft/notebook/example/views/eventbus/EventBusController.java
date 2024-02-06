@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.showcase.eventbus;
+package com.itangsoft.notebook.example.views.eventbus;
 
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.github.nalukit.nalu.client.event.NaluApplicationEvent;
@@ -6,8 +6,8 @@ import com.github.nalukit.nalu.client.event.annotation.EventHandler;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.base.BaseComponentController;
-import com.itangsoft.notebook.views.showcase.eventbus.event.AnnotationEvent;
-import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
+import com.itangsoft.notebook.example.views.eventbus.event.AnnotationEvent;
+import com.itangsoft.notebook.example.views.eventbus.event.CustomizeEvent;
 
 /**
  * EventBus Controller
@@ -15,7 +15,7 @@ import com.itangsoft.notebook.views.showcase.eventbus.event.CustomizeEvent;
  * @author fushuwei
  */
 @Controller(route = Routes.ROUTE_EVENTBUS,
-    selector = Slots.SELECTOR_LAYOUT_CONTENT,
+    selector = Slots.SELECTOR_EXAMPLE_PAGE,
     componentInterface = IEventBusComponent.class,
     component = EventBusComponent.class)
 public class EventBusController

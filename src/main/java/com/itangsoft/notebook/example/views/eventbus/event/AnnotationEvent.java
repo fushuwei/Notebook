@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.showcase.eventbus.event;
+package com.itangsoft.notebook.example.views.eventbus.event;
 
 import org.gwtproject.event.shared.Event;
 
@@ -9,7 +9,7 @@ import org.gwtproject.event.shared.Event;
  */
 public class AnnotationEvent extends Event<AnnotationEvent.AnnotationEventHandler> {
 
-    public static final Type<AnnotationEvent.AnnotationEventHandler> TYPE = new Type<>();
+    public static final Type<AnnotationEventHandler> TYPE = new Type<>();
 
     private String name;
     private String message;
@@ -33,12 +33,12 @@ public class AnnotationEvent extends Event<AnnotationEvent.AnnotationEventHandle
     }
 
     @Override
-    public Type<AnnotationEvent.AnnotationEventHandler> getAssociatedType() {
+    public Type<AnnotationEventHandler> getAssociatedType() {
         return TYPE;
     }
 
     @Override
-    protected void dispatch(AnnotationEvent.AnnotationEventHandler handler) {
+    protected void dispatch(AnnotationEventHandler handler) {
         handler.fireEvent(this);
     }
 
