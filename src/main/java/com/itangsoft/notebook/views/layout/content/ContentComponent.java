@@ -30,8 +30,6 @@ public class ContentComponent
         FileServiceFactory.INSTANCE.getFileContent(getController().getFileName())
             .onSuccess(s -> {
                 try {
-                    logger.info(s);
-
                     String convertedHtml = markdown2Html(s);
                     contentDiv.setInnerHtml(convertedHtml);
                 } catch (Exception e) {
