@@ -35,6 +35,8 @@ public class LayoutComponent
         // layout.setVersion(this.context.getApplicationVersion());
         layout.getToolbar()
             .appendChild(DominoElement.of(Elements.li())
+                .appendChild(DominoElement.of(Elements.a("#example/single-page-layout", "_blank")).textContent("单页布局")))
+            .appendChild(DominoElement.of(Elements.li())
                 .appendChild(DominoElement.of(Elements.a("#example/eventbus", "_blank")).textContent("事件总线")))
             .appendChild(DominoElement.of(Elements.li()).textContent("常用工具包"));
 
