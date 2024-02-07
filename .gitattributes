@@ -1,0 +1,3 @@
+# src/**/*.css linguist-language=java
+src/**/*.css linguist-vendored
+docs/**/*.css linguist-vendored
