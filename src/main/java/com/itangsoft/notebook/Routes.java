@@ -31,4 +31,8 @@ public class Routes {
      */
     public static final String SHELL_EXAMPLE_EVENTBUS = "example-eventbus-shell";
     public static final String ROUTE_EXAMPLE_EVENTBUS = "/" + Routes.SHELL_EXAMPLE_EVENTBUS + "/eventbus";
+
+    public static final String SHELL_EXAMPLE_LAYOUT = "example-layout-shell";
+    public static final String ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME = "/" + Routes.SHELL_EXAMPLE_LAYOUT + "/single-page-layout/home";
+    public static final String ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_CONTENT = "/" + Routes.SHELL_EXAMPLE_LAYOUT + "/single-page-layout/home/content/:fileName";
 }

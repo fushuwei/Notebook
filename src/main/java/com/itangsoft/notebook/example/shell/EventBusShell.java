@@ -17,7 +17,7 @@ import org.dominokit.domino.ui.utils.DominoElement;
 public class EventBusShell extends AbstractShell<AppContext> {
 
     DominoElement<HTMLDivElement> root = DominoElement.div()
-        .setId(Slots.SELECTOR_EXAMPLE_PAGE)
+        .setId(Slots.SELECTOR_EXAMPLE_EVENTBUS_PAGE)
         .css("example");
 
     @Override

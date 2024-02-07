@@ -15,8 +15,16 @@ public class Slots {
     public static final String SELECTOR_LAYOUT_NAVIGATION = "layout-navigation";
     public static final String SELECTOR_LAYOUT_WORKSPACE = "layout-workspace";
 
-    // example stuffs
-    public static final String SELECTOR_EXAMPLE_PAGE = "example-page";
+    /**
+     * examples
+     */
+    // eventbus
+    public static final String SELECTOR_EXAMPLE_EVENTBUS_PAGE = "example-eventbus-page";
+    // layout
+    public static final String SELECTOR_EXAMPLE_LAYOUT_PAGE = "example-layout-page";
+    public static final String SELECTOR_EXAMPLE_LAYOUT_LEFT_PANEL = "layout-left-panel";
+    public static final String SELECTOR_EXAMPLE_LAYOUT_CONTENT = "layout-content";
+
 
     public static final String SELECTOR_LAYOUT_HEADER = "layout-header";
     public static final String SELECTOR_LAYOUT_LEFT_SIDEBAR = "layout-left-sidebar";

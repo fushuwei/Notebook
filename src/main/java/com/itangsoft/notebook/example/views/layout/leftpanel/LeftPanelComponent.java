@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.layout.leftpanel;
+package com.itangsoft.notebook.example.views.layout.leftpanel;
 
 import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.itangsoft.notebook.model.Menu;

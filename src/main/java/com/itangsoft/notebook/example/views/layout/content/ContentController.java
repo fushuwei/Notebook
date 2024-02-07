@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.layout.content;
+package com.itangsoft.notebook.example.views.layout.content;
 
 import com.github.nalukit.nalu.client.component.annotation.AcceptParameter;
 import com.github.nalukit.nalu.client.component.annotation.Controller;
@@ -13,8 +13,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author fushuwei
  */
-@Controller(route = Routes.ROUTE_CONTENT,
-    selector = Slots.SELECTOR_LAYOUT_CONTENT,
+@Controller(route = Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_CONTENT,
+    selector = Slots.SELECTOR_EXAMPLE_LAYOUT_CONTENT,
     componentInterface = IContentComponent.class,
     component = ContentComponent.class)
 public class ContentController

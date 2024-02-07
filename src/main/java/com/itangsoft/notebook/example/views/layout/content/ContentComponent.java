@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.layout.content;
+package com.itangsoft.notebook.example.views.layout.content;
 
 import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.itangsoft.notebook.service.FileServiceFactory;

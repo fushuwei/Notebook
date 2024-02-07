@@ -15,7 +15,7 @@ import com.itangsoft.notebook.example.views.eventbus.event.CustomizeEvent;
  * @author fushuwei
  */
 @Controller(route = Routes.ROUTE_EXAMPLE_EVENTBUS,
-    selector = Slots.SELECTOR_EXAMPLE_PAGE,
+    selector = Slots.SELECTOR_EXAMPLE_EVENTBUS_PAGE,
     componentInterface = IEventBusComponent.class,
     component = EventBusComponent.class)
 public class EventBusController

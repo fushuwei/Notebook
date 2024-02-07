@@ -1,4 +1,4 @@
-package com.itangsoft.notebook.views.layout.leftpanel;
+package com.itangsoft.notebook.example.views.layout.leftpanel;
 
 import com.github.nalukit.nalu.client.component.annotation.Controller;
 import com.itangsoft.notebook.Routes;
@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author fushuwei
  */
-@Controller(route = Routes.ROUTE_HOME,
-    selector = Slots.SELECTOR_LAYOUT_LEFT_PANEL,
+@Controller(route = Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME,
+    selector = Slots.SELECTOR_EXAMPLE_LAYOUT_LEFT_PANEL,
     componentInterface = ILeftPanelComponent.class,
     component = LeftPanelComponent.class)
 public class LeftPanelController
@@ -28,6 +28,6 @@ public class LeftPanelController
     @Override
     public void openFile(String fileName) {
         logger.info(fileName);
-        this.router.route(Routes.ROUTE_CONTENT, fileName);
+        this.router.route(Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_CONTENT, fileName);
     }
 }
