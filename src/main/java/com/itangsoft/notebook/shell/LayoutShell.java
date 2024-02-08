@@ -16,11 +16,12 @@ import org.dominokit.domino.ui.utils.DominoElement;
 @Shell(Routes.SHELL_LAYOUT)
 public class LayoutShell extends AbstractShell<AppContext> {
 
-    DominoElement<HTMLDivElement> root = DominoElement.div();
+    DominoElement<HTMLDivElement> root = DominoElement.div()
+        .setId(Slots.SELECTOR_LAYOUT_PAGE).setWidth("100%").setHeight("100%");
 
     @Override
     public void attachShell() {
-        // DominoElement.body().appendChild(root.setId(Slots.SELECTOR_LAYOUT_PAGE));
+        DominoElement.body().appendChild(root);
     }
 
     @Override
