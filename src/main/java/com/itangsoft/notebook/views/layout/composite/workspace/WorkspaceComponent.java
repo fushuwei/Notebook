@@ -27,21 +27,25 @@ public class WorkspaceComponent
     public void render() {
         DominoElement<HTMLDivElement> contentDiv = DominoElement.div().css("markdown-body");
 
-        FileServiceFactory.INSTANCE.getFileContent(getController().getFileName())
+        initElement(DominoElement.div().appendChild(contentDiv).element());
+    }
+
+    public void temp() {
+        // FileServiceFactory.INSTANCE.getFileContent(getController().getFileName())
+        FileServiceFactory.INSTANCE.getFileContent("")
             .onSuccess(s -> {
                 try {
                     String convertedHtml = markdown2Html(s);
-                    contentDiv.setInnerHtml(convertedHtml);
+                    // contentDiv.setInnerHtml(convertedHtml);
                 } catch (Exception e) {
                     logger.error("Markdown笔记渲染失败", e);
                 }
             })
             .onFailed(failedResponseBean -> {
-                logger.error("Error: ", failedResponseBean.getThrowable());
+                logger.error("Error: " + failedResponseBean.getStatusCode() + " - " +
+                    failedResponseBean.getStatusText() + " - ", failedResponseBean.getThrowable());
             })
             .send();
-
-        initElement(DominoElement.div().appendChild(contentDiv).element());
     }
 
     public native String markdown2Html(String text) /*-{

@@ -24,7 +24,6 @@ public class NavigationComposite
 
     @Override
     public void openFile(String fileName) {
-        logger.info(fileName);
         this.router.route(Routes.ROUTE_CONTENT, fileName);
     }
 }

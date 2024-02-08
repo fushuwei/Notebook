@@ -29,6 +29,7 @@ public class Routes {
     /**
      * 示例页面
      */
+
     public static final String SHELL_EXAMPLE_EVENTBUS = "example-eventbus-shell";
     public static final String ROUTE_EXAMPLE_EVENTBUS = "/" + Routes.SHELL_EXAMPLE_EVENTBUS + "/eventbus";
 

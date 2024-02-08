@@ -12,6 +12,5 @@ public interface IWorkspaceComponent
     extends IsCompositeComponent<IWorkspaceComponent.Controller, HTMLElement> {
 
     interface Controller extends IsCompositeComponent.Controller {
-        String getFileName();
     }
 }

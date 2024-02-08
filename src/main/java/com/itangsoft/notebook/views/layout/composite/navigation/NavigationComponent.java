@@ -38,18 +38,16 @@ public class NavigationComponent
             .enableSearch()
             .enableFolding();
 
-        MenuServiceFactory.INSTANCE.queryMenus()
-            .onSuccess(response -> {
-                try {
-                    buildMenuTree(menuTree, response);
-                } catch (Exception e) {
-                    logger.error("菜单渲染失败", e);
-                }
-            })
-            .onFailed(failedResponse -> {
-                logger.error("Error: ", failedResponse.getThrowable());
-            })
-            .send();
+        MenuServiceFactory.INSTANCE.queryMenus().onSuccess(response -> {
+            try {
+                buildMenuTree(menuTree, response);
+            } catch (Exception e) {
+                logger.error("菜单渲染失败", e);
+            }
+        }).onFailed(failedResponse -> {
+            logger.error("Error: " + failedResponse.getStatusCode() + " - " +
+                failedResponse.getStatusText() + " - ", failedResponse.getThrowable());
+        }).send();
 
         initElement(DominoElement.div().appendChild(menuTree).element());
     }
