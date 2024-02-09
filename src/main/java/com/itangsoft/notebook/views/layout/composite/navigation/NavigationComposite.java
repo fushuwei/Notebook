@@ -1,8 +1,8 @@
 package com.itangsoft.notebook.views.layout.composite.navigation;
 
 import com.github.nalukit.nalu.client.component.annotation.CompositeController;
-import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.base.BaseCompositeController;
+import com.itangsoft.notebook.event.MenuChangeEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +23,7 @@ public class NavigationComposite
     }
 
     @Override
-    public void openFile(String fileName) {
-        this.router.route(Routes.ROUTE_CONTENT, fileName);
+    public void onMenuClick(String fileName) {
+        this.eventBus.fireEvent(MenuChangeEvent.create(null, fileName));
     }
 }

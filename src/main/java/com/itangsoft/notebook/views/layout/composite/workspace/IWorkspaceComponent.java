@@ -11,6 +11,8 @@ import elemental2.dom.HTMLElement;
 public interface IWorkspaceComponent
     extends IsCompositeComponent<IWorkspaceComponent.Controller, HTMLElement> {
 
+    void loadFile(String content);
+
     interface Controller extends IsCompositeComponent.Controller {
     }
 }

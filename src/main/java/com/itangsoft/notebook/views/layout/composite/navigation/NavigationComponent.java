@@ -88,7 +88,7 @@ public class NavigationComponent
                 .setActiveIcon(Icons.ALL.file_check_outline_mdi());
 
             // 对文件节点添加点击事件
-            treeItem.addClickListener(evt -> getController().openFile(menu.getMarkdown()));
+            treeItem.addClickListener(evt -> getController().onMenuClick(menu.getMarkdown()));
         }
 
         // 判断是否存在子菜单

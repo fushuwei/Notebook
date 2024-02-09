@@ -12,6 +12,6 @@ public interface INavigationComponent
     extends IsCompositeComponent<INavigationComponent.Controller, HTMLElement> {
 
     interface Controller extends IsCompositeComponent.Controller {
-        void openFile(String fileName);
+        void onMenuClick(String fileName);
     }
 }

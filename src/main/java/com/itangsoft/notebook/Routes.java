@@ -24,7 +24,6 @@ public class Routes {
      */
     public static final String SHELL_LAYOUT = "layout";
     public static final String ROUTE_HOME = "/" + Routes.SHELL_LAYOUT + "/home";
-    public static final String ROUTE_CONTENT = "/" + Routes.SHELL_LAYOUT + "/home/content/:fileName";
 
     /**
      * 示例页面
