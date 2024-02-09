@@ -319,7 +319,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 .app-layout > div:first-child {
   width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-width: 500px;
@@ -449,6 +449,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
   border-width: 1px 0;
   border-style: solid;
   border-color: #cdcdcd;
+  overflow: hidden;
 }
 
 /* ===================================================================================================== */
@@ -459,6 +460,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
   flex: 1;
   display: flex;
   width: 100%;
+  height: 100%;
 }
 
 /* ===================================================================================================== */
@@ -573,7 +575,7 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 .layout-body-main .layout-middle-container {
   flex: 1;
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   border-width: 0 1px;
   border-style: solid;
   border-color: #cdcdcd;
@@ -612,14 +614,24 @@ input[type=password] {font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sa
 
 .layout-middle-container .layout-content {
   flex: 1;
+  display: flex;
   overflow: hidden;
+  padding: 0 0 0 8px;
 }
 
 .layout-middle-container .layout-content > div {
   flex: 1;
   display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.layout-middle-container .layout-content > div > div {
+  width: 100%;
+  margin: 30px 200px;
   overflow: auto;
-  background-color: #fff;
 }
 
 /* ===================================================================================================== */
