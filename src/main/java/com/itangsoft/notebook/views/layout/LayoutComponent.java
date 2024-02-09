@@ -21,19 +21,17 @@ public class LayoutComponent
 
     private static final Logger logger = LoggerFactory.getLogger(LayoutComponent.class);
 
+    AppLayout layout = AppLayout.create();
+
     public LayoutComponent() {
         super();
     }
 
     @Override
     public void render() {
-        AppLayout layout = AppLayout.create().show();
-
         // 设置页眉
         layout.setLogo(Elements.img("images/logo.png?ts=" + System.currentTimeMillis()).css().element());
         layout.setTitle("云笔记");
-        // layout.setAvatar(this.context.getRealName());
-        // layout.setVersion(this.context.getApplicationVersion());
         layout.getToolbar()
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank")).textContent("单页布局")))
@@ -47,6 +45,16 @@ public class LayoutComponent
         // 设置主面板
         layout.getContent().setId(Slots.SELECTOR_LAYOUT_WORKSPACE);
 
-        initElement(layout.element());
+        initElement(layout.show().element());
+    }
+
+    @Override
+    public void setRealName(String realName) {
+        layout.setAvatar(realName);
+    }
+
+    @Override
+    public void setApplicationVersion(String applicationVersion) {
+        layout.setVersion(applicationVersion);
     }
 }

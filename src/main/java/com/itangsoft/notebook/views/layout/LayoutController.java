@@ -36,6 +36,12 @@ public class LayoutController
     public LayoutController() {
     }
 
+    @Override
+    public void start() {
+        this.component.setRealName(this.context.getRealName());
+        this.component.setApplicationVersion(this.context.getApplicationVersion());
+    }
+
     @EventHandler
     public void registerMenuChangeEvent(MenuChangeEvent event) {
         if (event.getNewFileName() != null && !event.getNewFileName().equals(event.getOldFileName())) {

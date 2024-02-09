@@ -10,6 +10,10 @@ import elemental2.dom.HTMLElement;
  */
 public interface ILayoutComponent extends IsComponent<ILayoutComponent.Controller, HTMLElement> {
 
+    void setRealName(String realName);
+
+    void setApplicationVersion(String applicationVersion);
+
     interface Controller extends IsComponent.Controller {
     }
 }
