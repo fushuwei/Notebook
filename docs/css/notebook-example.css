@@ -18,12 +18,17 @@
   text-align: center;
 }
 
+.example .eventbus h5, h6 {
+  font-weight: normal;
+}
+
 .example .eventbus h2 {
   margin-bottom: 25px;
 }
 
 .example .eventbus > div > div {
-  flex: auto;
+  /* flex: auto; */
+  flex: 1;
   margin: 1em;
   padding: 0.5em;
   border: 1px solid grey;
