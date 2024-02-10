@@ -10,6 +10,8 @@ import com.itangsoft.notebook.base.BaseComponentController;
 import com.itangsoft.notebook.event.MenuChangeEvent;
 import com.itangsoft.notebook.views.layout.composite.navigation.NavigationComposite;
 import com.itangsoft.notebook.views.layout.composite.workspace.WorkspaceComposite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Layout Controller
@@ -33,6 +35,8 @@ public class LayoutController
     extends BaseComponentController<ILayoutComponent>
     implements ILayoutComponent.Controller {
 
+    private static final Logger logger = LoggerFactory.getLogger(LayoutController.class);
+
     public LayoutController() {
     }
 
@@ -42,12 +46,22 @@ public class LayoutController
         this.component.setApplicationVersion(this.context.getApplicationVersion());
     }
 
+    /**
+     * 已弃用, 此代码快与 WorkspaceComposite.java 的 start() 方法作用一样
+     * <p>
+     * 弃用原因: this.eventBus.addHandler() 方式注册事件的代码比 @EventHandler 先执行
+     *
+     * @param event MenuChangeEvent事件对象
+     */
     @EventHandler
     public void registerMenuChangeEvent(MenuChangeEvent event) {
-        String oldFileName = event.getOldMenu() != null ? event.getOldMenu().getMarkdown() : null;
-        String newFileName = event.getNewMenu() != null ? event.getNewMenu().getMarkdown() : null;
-        if (newFileName != null && !newFileName.equals(oldFileName)) {
-            super.<WorkspaceComposite>getComposite("workspaceComposite").openFile(newFileName);
+        if (false) {
+            String oldFileName = event.getOldMenu() != null ? event.getOldMenu().getMarkdown() : null;
+            String newFileName = event.getNewMenu() != null ? event.getNewMenu().getMarkdown() : null;
+            if (newFileName != null && !newFileName.equals(oldFileName)) {
+                super.<WorkspaceComposite>getComposite("workspaceComposite").openFile(newFileName);
+                this.context.setCurrentMenu(event.getNewMenu());
+            }
         }
     }
 }

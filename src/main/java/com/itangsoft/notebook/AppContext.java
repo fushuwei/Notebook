@@ -76,11 +76,15 @@ public class AppContext extends AbstractModuleContext {
     }
 
     public Menu getCurrentMenu() {
-        Menu currentMenu = (Menu) super.getApplicationContext().get("currentMenu");
-        if (Objects.isNull(currentMenu)) {
-            currentMenu = Menu_MapperImpl.INSTANCE.read(Storage.getSessionStorageIfSupported().getItem("currentMenu"));
+        Object obj = super.getApplicationContext().get("currentMenu");
+        if (Objects.nonNull(obj)) {
+            return (Menu) obj;
         }
-        return currentMenu;
+        String s = Storage.getSessionStorageIfSupported().getItem("currentMenu");
+        if (Objects.nonNull(s)) {
+            return Menu_MapperImpl.INSTANCE.read(s);
+        }
+        return null;
     }
 
     public void setCurrentMenu(Menu menu) {
