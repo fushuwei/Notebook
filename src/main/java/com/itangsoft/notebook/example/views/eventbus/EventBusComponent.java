@@ -13,7 +13,9 @@ import org.jboss.elemento.Elements;
  *
  * @author fushuwei
  */
-public class EventBusComponent extends AbstractComponent<IEventBusComponent.Controller, HTMLElement> implements IEventBusComponent {
+public class EventBusComponent
+    extends AbstractComponent<IEventBusComponent.Controller, HTMLElement>
+    implements IEventBusComponent {
 
     DominoElement<HTMLDivElement> root = DominoElement.div().css("eventbus");
 
@@ -60,7 +62,10 @@ public class EventBusComponent extends AbstractComponent<IEventBusComponent.Cont
                     .appendChild(Elements.h(2, "使用 @EventHandler 注解"))
                     .appendChild(clickBtn3)
                     .appendChild(clearBtn3)
-                    .appendChild(textArea3))
+                    .appendChild(textArea3)
+                    .appendChild(Elements.h(5, "注意："))
+                    .appendChild(Elements.h(6, "1. 建议在Controller中使用@EventHandler."))
+                    .appendChild(Elements.h(6, "2. 使用@EventHandler注册的事件必须在当前Controller的activate()方法中调用，在start()方法中调用无效.")))
                 .setDisplay("flex"));
 
         initElement(root.element());
