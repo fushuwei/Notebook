@@ -45,7 +45,7 @@ public class LayoutController
     @EventHandler
     public void registerMenuChangeEvent(MenuChangeEvent event) {
         if (event.getNewFileName() != null && !event.getNewFileName().equals(event.getOldFileName())) {
-            super.<WorkspaceComposite>getComposite("workspaceComposite").showFile(event.getNewFileName());
+            super.<WorkspaceComposite>getComposite("workspaceComposite").openFile(event.getNewFileName());
         }
     }
 }

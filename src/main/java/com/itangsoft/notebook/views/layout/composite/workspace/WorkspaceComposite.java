@@ -22,7 +22,7 @@ public class WorkspaceComposite
     public WorkspaceComposite() {
     }
 
-    public void showFile(String fileName) {
+    public void openFile(String fileName) {
         FileServiceFactory.INSTANCE.getFileContent(fileName).onSuccess(response -> {
             try {
                 this.component.loadFile(response);
