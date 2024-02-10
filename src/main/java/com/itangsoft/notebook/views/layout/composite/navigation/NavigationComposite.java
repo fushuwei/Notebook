@@ -27,4 +27,9 @@ public class NavigationComposite
     public void onMenuClick(Menu menu) {
         this.eventBus.fireEvent(MenuClickEvent.create(null, menu));
     }
+
+    @Override
+    public Menu getLastClickMenu() {
+        return this.context.getCurrentMenu();
+    }
 }

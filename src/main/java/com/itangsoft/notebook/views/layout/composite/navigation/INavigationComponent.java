@@ -14,5 +14,7 @@ public interface INavigationComponent
 
     interface Controller extends IsCompositeComponent.Controller {
         void onMenuClick(Menu menu);
+
+        Menu getLastClickMenu();
     }
 }

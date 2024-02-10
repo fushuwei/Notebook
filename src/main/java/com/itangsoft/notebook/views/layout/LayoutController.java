@@ -59,7 +59,7 @@ public class LayoutController
     /**
      * 注册菜单点击事件
      *
-     * @param event 点击事件
+     * @param event MenuClickEvent
      */
     @EventHandler
     public void registerMenuClickEvent(MenuClickEvent event) {
