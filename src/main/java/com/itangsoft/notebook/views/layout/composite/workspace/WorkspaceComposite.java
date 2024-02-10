@@ -2,7 +2,7 @@ package com.itangsoft.notebook.views.layout.composite.workspace;
 
 import com.github.nalukit.nalu.client.component.annotation.CompositeController;
 import com.itangsoft.notebook.base.BaseCompositeController;
-import com.itangsoft.notebook.event.MenuChangeEvent;
+import com.itangsoft.notebook.event.MenuClickEvent;
 import com.itangsoft.notebook.model.Menu;
 import com.itangsoft.notebook.service.FileServiceFactory;
 import org.slf4j.Logger;
@@ -26,8 +26,8 @@ public class WorkspaceComposite
 
     @Override
     public void start() {
-        // 注册菜单切换点击事件
-        this.eventBus.addHandler(MenuChangeEvent.TYPE, event -> {
+        // 注册菜单点击事件
+        this.eventBus.addHandler(MenuClickEvent.TYPE, event -> {
             String oldFileName = event.getOldMenu() != null ? event.getOldMenu().getMarkdown() : null;
             String newFileName = event.getNewMenu() != null ? event.getNewMenu().getMarkdown() : null;
             if (newFileName != null && !newFileName.equals(oldFileName)) {
@@ -42,7 +42,7 @@ public class WorkspaceComposite
         // 重新加载页面时显示上一次访问的菜单
         Menu menu = this.context.getCurrentMenu();
         if (menu != null) {
-            this.eventBus.fireEvent(MenuChangeEvent.create(null, menu));
+            this.eventBus.fireEvent(MenuClickEvent.create(null, menu));
         }
     }
 

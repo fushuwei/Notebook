@@ -2,7 +2,7 @@ package com.itangsoft.notebook.views.layout.composite.navigation;
 
 import com.github.nalukit.nalu.client.component.annotation.CompositeController;
 import com.itangsoft.notebook.base.BaseCompositeController;
-import com.itangsoft.notebook.event.MenuChangeEvent;
+import com.itangsoft.notebook.event.MenuClickEvent;
 import com.itangsoft.notebook.model.Menu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +25,6 @@ public class NavigationComposite
 
     @Override
     public void onMenuClick(Menu menu) {
-        this.eventBus.fireEvent(MenuChangeEvent.create(null, menu));
+        this.eventBus.fireEvent(MenuClickEvent.create(null, menu));
     }
 }

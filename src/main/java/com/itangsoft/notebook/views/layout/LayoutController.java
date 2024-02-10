@@ -7,7 +7,7 @@ import com.github.nalukit.nalu.client.event.annotation.EventHandler;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.base.BaseComponentController;
-import com.itangsoft.notebook.event.MenuChangeEvent;
+import com.itangsoft.notebook.event.MenuClickEvent;
 import com.itangsoft.notebook.views.layout.composite.navigation.NavigationComposite;
 import com.itangsoft.notebook.views.layout.composite.workspace.WorkspaceComposite;
 import org.slf4j.Logger;
@@ -51,10 +51,10 @@ public class LayoutController
      * <p>
      * 弃用原因: this.eventBus.addHandler() 方式注册事件的代码比 @EventHandler 先执行
      *
-     * @param event MenuChangeEvent事件对象
+     * @param event MenuClickEvent事件对象
      */
     @EventHandler
-    public void registerMenuChangeEvent(MenuChangeEvent event) {
+    public void registerMenuClickEvent(MenuClickEvent event) {
         if (false) {
             String oldFileName = event.getOldMenu() != null ? event.getOldMenu().getMarkdown() : null;
             String newFileName = event.getNewMenu() != null ? event.getNewMenu().getMarkdown() : null;
