@@ -2,6 +2,8 @@ package com.itangsoft.notebook;
 
 import com.github.nalukit.nalu.client.context.AbstractModuleContext;
 import com.google.gwt.storage.client.Storage;
+import com.itangsoft.notebook.model.Menu;
+import com.itangsoft.notebook.model.Menu_MapperImpl;
 import org.dominokit.domino.ui.forms.TextArea;
 import org.gwtproject.i18n.client.DateTimeFormat;
 
@@ -71,5 +73,18 @@ public class AppContext extends AbstractModuleContext {
 
     public String getApplicationBuildTimeStr() {
         return DateTimeFormat.getFormat("yyyy-MM-dd HH:mm:ss").format(this.getApplicationBuildTime());
+    }
+
+    public Menu getCurrentMenu() {
+        Menu currentMenu = (Menu) super.getApplicationContext().get("currentMenu");
+        if (Objects.isNull(currentMenu)) {
+            currentMenu = Menu_MapperImpl.INSTANCE.read(Storage.getSessionStorageIfSupported().getItem("currentMenu"));
+        }
+        return currentMenu;
+    }
+
+    public void setCurrentMenu(Menu menu) {
+        super.getApplicationContext().put("currentMenu", menu);
+        Storage.getSessionStorageIfSupported().setItem("currentMenu", Menu_MapperImpl.INSTANCE.write(menu));
     }
 }

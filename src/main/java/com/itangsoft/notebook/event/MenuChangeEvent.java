@@ -1,5 +1,6 @@
 package com.itangsoft.notebook.event;
 
+import com.itangsoft.notebook.model.Menu;
 import org.gwtproject.event.shared.Event;
 
 /**
@@ -11,25 +12,25 @@ public class MenuChangeEvent extends Event<MenuChangeEvent.MenuChangeEventHandle
 
     public static final Type<MenuChangeEvent.MenuChangeEventHandler> TYPE = new Type<>();
 
-    private String oldFileName;
-    private String newFileName;
+    private Menu oldMenu;
+    private Menu newMenu;
 
     private MenuChangeEvent() {
         super();
     }
 
-    private MenuChangeEvent(String oldFileName, String newFileName) {
+    private MenuChangeEvent(Menu oldMenu, Menu newMenu) {
         super();
-        this.oldFileName = oldFileName;
-        this.newFileName = newFileName;
+        this.oldMenu = oldMenu;
+        this.newMenu = newMenu;
     }
 
     public static MenuChangeEvent create() {
         return new MenuChangeEvent();
     }
 
-    public static MenuChangeEvent create(String oldFileName, String newFileName) {
-        return new MenuChangeEvent(oldFileName, newFileName);
+    public static MenuChangeEvent create(Menu oldMenu, Menu newMenu) {
+        return new MenuChangeEvent(oldMenu, newMenu);
     }
 
     @Override
@@ -46,11 +47,11 @@ public class MenuChangeEvent extends Event<MenuChangeEvent.MenuChangeEventHandle
         void fireEvent(MenuChangeEvent event);
     }
 
-    public String getOldFileName() {
-        return oldFileName;
+    public Menu getOldMenu() {
+        return oldMenu;
     }
 
-    public String getNewFileName() {
-        return newFileName;
+    public Menu getNewMenu() {
+        return newMenu;
     }
 }
