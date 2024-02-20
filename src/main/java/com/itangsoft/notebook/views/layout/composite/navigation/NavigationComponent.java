@@ -91,16 +91,6 @@ public class NavigationComponent
             treeItem.expand();
         }
 
-        // 如果当前递归的菜单是页面刷新前最后一次点击的菜单，则展开并选中
-        if (this.getController().getLastClickMenu() != null) {
-            if (this.getController().getLastClickMenu().getId().startsWith(menu.getId() + "_")) {
-                treeItem.expand();
-            }
-            if (this.getController().getLastClickMenu().getName().equals(menu.getName())) {
-                treeItem.select();
-            }
-        }
-
         return treeItem;
     }
 
