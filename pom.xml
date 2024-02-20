@@ -257,6 +257,8 @@
                             <!-- <arg>-incremental</arg> -->
                         </compilerArgs>
                         <codeserverArgs>
+                            <arg>-bindAddress</arg>
+                            <arg>127.0.0.1</arg>
                             <arg>-port</arg>
                             <arg>6789</arg>
                         </codeserverArgs>
