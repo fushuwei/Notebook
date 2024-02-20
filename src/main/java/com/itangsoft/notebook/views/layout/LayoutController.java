@@ -49,7 +49,7 @@ public class LayoutController
 
     @Override
     public void activate() {
-        // 重新加载页面时显示上一次访问的菜单
+        // 刷新浏览器时显示最近一次访问的页面
         Menu menu = this.context.getCurrentMenu();
         if (menu != null) {
             this.eventBus.fireEvent(MenuClickEvent.create(null, menu));

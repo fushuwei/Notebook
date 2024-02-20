@@ -33,7 +33,7 @@ public class NavigationComponent
 
     @Override
     public void render() {
-        Tree<String> menuTree = Tree.create("我的笔记")
+        Tree<Menu> menuTree = Tree.create("我的笔记", new Menu())
             .setAutoCollapse(false)
             .enableSearch()
             .enableFolding();
@@ -52,7 +52,7 @@ public class NavigationComponent
         initElement(DominoElement.div().appendChild(menuTree).element());
     }
 
-    public void buildMenuTree(Tree<String> menuTree, List<Menu> menus) {
+    public void buildMenuTree(Tree<Menu> menuTree, List<Menu> menus) {
         // 将菜单数据转成 parentId 和 subMenuList 的键值对
         Map<String, List<Menu>> mapping = new HashMap<>();
         for (Menu menu : menus) {
@@ -71,20 +71,21 @@ public class NavigationComponent
         // 循环第一级菜单，然后递归子菜单
         menus.forEach(menu -> {
             if (menu.getParentId() == null || "".equals(menu.getParentId())) {
-                TreeItem<String> treeItem = buildMenuItem(menu, mapping);
+                TreeItem<Menu> treeItem = buildMenuItem(menu, mapping);
                 menuTree.appendChild(treeItem);
             }
         });
     }
 
-    public TreeItem<String> buildMenuItem(Menu menu, Map<String, List<Menu>> mapping) {
-        TreeItem<String> treeItem;
+    public TreeItem<Menu> buildMenuItem(Menu menu, Map<String, List<Menu>> mapping) {
+        TreeItem<Menu> treeItem;
 
         // 判断是目录还是文件
         if (menu.isFolder()) {
-            treeItem = TreeItem.create(menu.getName(), Icons.ALL.folder()).setExpandIcon(Icons.ALL.folder_open());
+            treeItem = TreeItem.create(menu.getName(), Icons.ALL.folder(), menu)
+                .setExpandIcon(Icons.ALL.folder_open());
         } else {
-            treeItem = TreeItem.create(menu.getName(), Icons.ALL.insert_drive_file())
+            treeItem = TreeItem.create(menu.getName(), Icons.ALL.insert_drive_file(), menu)
                 .setActiveIcon(Icons.ALL.file_check_outline_mdi());
 
             // 对文件节点添加点击事件
@@ -95,7 +96,7 @@ public class NavigationComponent
         List<Menu> subMenuList;
         if ((subMenuList = mapping.get(menu.getId())) != null && !subMenuList.isEmpty()) {
             subMenuList.forEach(subMenu -> {
-                TreeItem<String> subTreeItem = buildMenuItem(subMenu, mapping);
+                TreeItem<Menu> subTreeItem = buildMenuItem(subMenu, mapping);
                 treeItem.appendChild(subTreeItem);
             });
         }
