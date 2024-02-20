@@ -53,25 +53,10 @@ public class NavigationComponent
     }
 
     public void buildMenuTree(Tree<Menu> menuTree, List<Menu> menus) {
-        // 将菜单数据转成 parentId 和 subMenuList 的键值对
-        Map<String, List<Menu>> mapping = new HashMap<>();
-        for (Menu menu : menus) {
-            // 一级菜单不需要转换，因为其parentId为空
-            if (menu.getParentId() == null || "".equals(menu.getParentId())) {
-                continue;
-            }
-            List<Menu> tempList = new ArrayList<>();
-            if (mapping.containsKey(menu.getParentId())) {
-                tempList = mapping.get(menu.getParentId());
-            }
-            tempList.add(menu);
-            mapping.put(menu.getParentId(), tempList);
-        }
-
-        // 循环第一级菜单，然后递归子菜单
+        // 渲染导航树
         menus.forEach(menu -> {
             if (menu.getParentId() == null || "".equals(menu.getParentId())) {
-                TreeItem<Menu> treeItem = buildMenuItem(menu, mapping);
+                TreeItem<Menu> treeItem = buildMenuItem(menu, getMenuMapping(menus));
                 menuTree.appendChild(treeItem);
             }
         });
@@ -117,5 +102,28 @@ public class NavigationComponent
         }
 
         return treeItem;
+    }
+
+    /**
+     * 将菜单数据转成 parentId 和 subMenuList 的键值对
+     *
+     * @param menus 所有菜单
+     * @return Map
+     */
+    public Map<String, List<Menu>> getMenuMapping(List<Menu> menus) {
+        Map<String, List<Menu>> mapping = new HashMap<>();
+        for (Menu menu : menus) {
+            // 一级菜单不需要转换，因为其parentId为空
+            if (menu.getParentId() == null || "".equals(menu.getParentId())) {
+                continue;
+            }
+            List<Menu> tempList = new ArrayList<>();
+            if (mapping.containsKey(menu.getParentId())) {
+                tempList = mapping.get(menu.getParentId());
+            }
+            tempList.add(menu);
+            mapping.put(menu.getParentId(), tempList);
+        }
+        return mapping;
     }
 }
