@@ -14,7 +14,9 @@
   background-color: #FAFAFA;
 }
 
-.example .eventbus h1, h2, h3 {
+.example .eventbus h1,
+.example .eventbus h2,
+.example .eventbus h3 {
   text-align: center;
 }
 
