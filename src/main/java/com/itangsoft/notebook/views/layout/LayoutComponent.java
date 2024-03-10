@@ -37,7 +37,8 @@ public class LayoutComponent
                 .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank")).textContent("单页布局")))
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_EVENTBUS, "_blank")).textContent("事件总线")))
-            .appendChild(DominoElement.of(Elements.li()).textContent("常用工具包"));
+            .appendChild(DominoElement.of(Elements.li())
+                .appendChild(DominoElement.of(Elements.a("https://github.com/fushuwei/notebook", "_blank")).textContent("GitHub")));
 
         // 设置左侧面板
         layout.getLeftPanel().setId(Slots.SELECTOR_LAYOUT_NAVIGATION);
