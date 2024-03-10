@@ -35,13 +35,22 @@ public class LayoutComponent
         layout.setTitle("云笔记");
         layout.getToolbar()
             .appendChild(DominoElement.of(Elements.li())
-                .appendChild(DominoElement.of(Elements.a()).textContent("网页水印").addClickListener(evt -> showWatermark())))
+                .appendChild(
+                    DominoElement.of(Elements.a())
+                        .textContent("网页水印")
+                        .addClickListener(evt -> showWatermark())))
             .appendChild(DominoElement.of(Elements.li())
-                .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank")).textContent("单页面布局")))
+                .appendChild(
+                    DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank"))
+                        .textContent("单页面布局")))
             .appendChild(DominoElement.of(Elements.li())
-                .appendChild(DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_EVENTBUS, "_blank")).textContent("事件总线")))
+                .appendChild(
+                    DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_EVENTBUS, "_blank"))
+                        .textContent("事件总线")))
             .appendChild(DominoElement.of(Elements.li())
-                .appendChild(DominoElement.of(Elements.a("https://github.com/fushuwei/notebook", "_blank")).textContent("GitHub")));
+                .appendChild(
+                    DominoElement.of(Elements.a("https://github.com/fushuwei/notebook", "_blank"))
+                        .textContent("GitHub")).setWidth("50px"));
 
         // 设置左侧面板
         layout.getLeftPanel().setId(Slots.SELECTOR_LAYOUT_NAVIGATION);
