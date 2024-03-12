@@ -4,7 +4,6 @@ import com.github.nalukit.nalu.client.component.AbstractComponent;
 import com.itangsoft.notebook.Routes;
 import com.itangsoft.notebook.Slots;
 import com.itangsoft.notebook.layout.AppLayout;
-import com.itangsoft.notebook.utils.watermark.Watermark;
 import elemental2.dom.HTMLElement;
 import org.dominokit.domino.ui.utils.DominoElement;
 import org.jboss.elemento.Elements;
@@ -36,17 +35,16 @@ public class LayoutComponent
         layout.getToolbar()
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(
-                    DominoElement.of(Elements.a())
-                        .textContent("网页水印")
-                        .addClickListener(evt -> showWatermark())))
-            .appendChild(DominoElement.of(Elements.li())
-                .appendChild(
-                    DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank"))
-                        .textContent("单页面布局")))
+                    DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_WATERMARK, "_blank"))
+                        .textContent("网页水印")))
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(
                     DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_EVENTBUS, "_blank"))
                         .textContent("事件总线")))
+            .appendChild(DominoElement.of(Elements.li())
+                .appendChild(
+                    DominoElement.of(Elements.a("#" + Routes.ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME, "_blank"))
+                        .textContent("单页面布局")))
             .appendChild(DominoElement.of(Elements.li())
                 .appendChild(
                     DominoElement.of(Elements.a("https://github.com/fushuwei/notebook", "_blank"))
@@ -59,13 +57,6 @@ public class LayoutComponent
         layout.getContent().setId(Slots.SELECTOR_LAYOUT_WORKSPACE);
 
         initElement(layout.show().element());
-    }
-
-    /**
-     * 显示网页水印
-     */
-    public void showWatermark() {
-        new Watermark(new String[]{"测试水印"}).render();
     }
 
     @Override

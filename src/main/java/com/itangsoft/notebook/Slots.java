@@ -24,6 +24,8 @@ public class Slots {
     public static final String SELECTOR_EXAMPLE_LAYOUT_PAGE = "example-layout-page";
     public static final String SELECTOR_EXAMPLE_LAYOUT_LEFT_PANEL = "layout-left-panel";
     public static final String SELECTOR_EXAMPLE_LAYOUT_CONTENT = "layout-content";
+    // watermark
+    public static final String SELECTOR_EXAMPLE_WATERMARK_PAGE = "example-watermark-page";
 
 
     // Deprecated

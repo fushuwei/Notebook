@@ -35,4 +35,7 @@ public class Routes {
     public static final String SHELL_EXAMPLE_LAYOUT = "example-layout-shell";
     public static final String ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_HOME = "/" + Routes.SHELL_EXAMPLE_LAYOUT + "/single-page-layout/home";
     public static final String ROUTE_EXAMPLE_SINGLE_PAGE_LAYOUT_CONTENT = "/" + Routes.SHELL_EXAMPLE_LAYOUT + "/single-page-layout/home/content/:fileName";
+
+    public static final String SHELL_EXAMPLE_WATERMARK = "example-watermark-shell";
+    public static final String ROUTE_EXAMPLE_WATERMARK = "/" + Routes.SHELL_EXAMPLE_WATERMARK + "/watermark";
 }
