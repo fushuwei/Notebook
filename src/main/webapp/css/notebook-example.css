@@ -20,7 +20,8 @@
   text-align: center;
 }
 
-.example .eventbus h5, h6 {
+.example .eventbus h5,
+.example .eventbus h6 {
   font-weight: normal;
 }
 
@@ -46,9 +47,39 @@
 }
 
 .example .watermark {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 10px;
   border: 1px solid grey;
   background-color: #FAFAFA;
+}
+
+.example .watermark h1,
+.example .watermark h2,
+.example .watermark h3 {
+  text-align: center;
+}
+
+.example .watermark h4,
+.example .watermark h5,
+.example .watermark h6 {
+  font-weight: normal;
+}
+
+.example .watermark h2 {
+  margin-bottom: 25px;
+}
+
+.example .watermark div {
+  flex: 1;
+  display: flex;
+}
+
+.example .watermark > div > div {
+  flex: 1;
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid grey;
 }
